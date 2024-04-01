@@ -34,6 +34,9 @@ class Product(TimeStampedModel):
     amount = models.PositiveIntegerField(_("Amount"))
     price = models.FloatField(_("Price"))
     categories = models.ManyToManyField(Category, related_name="products", verbose_name=_("Categories"))
+    shop = models.ForeignKey(
+        "main.shop", on_delete=models.SET_NULL, related_name="products", verbose_name=_("Shop"), null=True
+    )
     active = models.BooleanField(_("Active"), default=True)
 
     def __str__(self):
@@ -66,3 +69,17 @@ class ProductImage(TimeStampedModel):
             main_images_count = self.product.images.filter(is_main=True).exclude(pk=self.pk).count()
             if main_images_count > 0:
                 raise ValidationError({"is_main": _("There can only be one main image for each product.")})
+
+
+class Shop(TimeStampedModel):
+    title = models.CharField(_("Title"), max_length=255)
+    description = models.TextField(_("Description"))
+    image = models.ImageField(_("Image"), upload_to="shop_images/")
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = _("Shop")
+        verbose_name_plural = _("Shops")
+        ordering = ("-created_at",)
