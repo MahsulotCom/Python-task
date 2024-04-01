@@ -10,3 +10,4 @@ django-modeltranslation==0.18.11
 djangorestframework==3.14.0
 django-cors-headers==4.3.1
 drf-yasg==1.21.7
+django-mptt==0.16.0
