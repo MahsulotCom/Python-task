@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, DateTime, func, ForeignKey, DECIMAL, Text
+from sqlalchemy import Column, Integer, String, DateTime, func, ForeignKey, DECIMAL, Text,Boolean
 from sqlalchemy.orm import relationship
 
 from db import Base
@@ -14,5 +14,6 @@ class Product(Base):
     trade_price = Column(DECIMAL, nullable=False)
     amount = Column(DECIMAL, nullable=False)
     description = Column(Text, nullable=True)
+    active = Column(Boolean, default=True,nullable=True)
     created_at = Column(DateTime(timezone=True), default=func.now())
     user_id = Column(Integer,ForeignKey('Users.id'))

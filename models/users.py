@@ -12,5 +12,6 @@ class Users(Base):
     number = Column(String(30), nullable=True)
     username = Column(String(50), unique=True, nullable=False)
     password = Column(String(200), nullable=False)
+    active = Column(Boolean,default=True, nullable=True)
     status = Column(Boolean, nullable=False, default=True)
     token = Column(String(400), default='', nullable=True)
