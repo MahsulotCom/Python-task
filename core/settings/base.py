@@ -48,6 +48,8 @@ THIRD_PARTY_APPS = [
     "corsheaders",
     "modeltranslation",
     "mptt",
+    "image_uploader_widget",
+    "rangefilter",
 ]
 
 REST_FRAMEWORK = {

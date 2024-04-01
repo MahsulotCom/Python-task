@@ -5,7 +5,8 @@ from django.utils.html import mark_safe
 from django.utils.translation import gettext_lazy as _
 from mptt.admin import MPTTModelAdmin
 
-from apps.main.models import Category
+from apps.common.mixins import ImageFieldMixin
+from apps.main.models import Category, Product, ProductImage
 
 
 @admin.register(Category)
@@ -15,12 +16,10 @@ class CategoryAdmin(MPTTModelAdmin):
         "order",
         "get_paths",
     )
-    search_fields = (
-        "title",
-        "parent__id",
-    )
+    search_fields = ("title", "parent__id", "products__id")
     mptt_level_indent = 30
-    list_filter = ("parent",)
+    list_filter = ("parent", "products")
+    autocomplete_fields = ("parent", "products")
     list_editable = ("order",)
     list_display_links = ("title",)
     fieldsets = (
@@ -60,3 +59,57 @@ class CategoryAdmin(MPTTModelAdmin):
         return mark_safe(" / ".join(paths))
 
     get_paths.short_description = _("Category Path")  # type: ignore
+
+
+class ProductImageInline(ImageFieldMixin, admin.TabularInline):
+    model = ProductImage
+    extra = 0
+
+
+@admin.register(Product)
+class ProductAdmin(admin.ModelAdmin):
+    list_display = (
+        "main_image",
+        "title",
+        "amount",
+        "price",
+        "active",
+    )
+    search_fields = (
+        "id",
+        "title",
+        "amount",
+        "price",
+    )
+    list_display_links = ("title",)
+    list_filter = (
+        "categories",
+        "active",
+    )
+    list_editable = ("amount", "price", "active")
+    inlines = (ProductImageInline,)
+    fieldsets = (
+        (None, {"fields": ("main_image_detail", "title", "description", "amount", "price", "categories", "active")}),
+    )
+    readonly_fields = ("main_image_detail", "created_at", "updated_at")
+    autocomplete_fields = ("categories",)
+    filter_horizontal = ("categories",)
+    list_per_page = 20
+    save_as = True
+    list_select_related = True
+
+    def main_image(self, obj, height=100):
+        """Display the main image of the product."""
+        main_image = obj.images.filter(is_main=True).first()
+        if not main_image:
+            main_image = obj.images.first()
+        if main_image:
+            return mark_safe(f'<img src="{main_image.image.url}"  height="{height}">')
+        return _("No image")
+
+    main_image.short_description = _("Main Image")  # type: ignore
+
+    def main_image_detail(self, obj):
+        return self.main_image(obj, height=300)
+
+    main_image_detail.short_description = _("Main Image")  # type: ignore
