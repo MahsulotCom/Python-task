@@ -1,44 +1,135 @@
-# UnicalExpress test for Python developer
-Here lies the description and requirements of the test task for Python/Django Developer position applicants.
+## Setting Up the Project
 
-## Task goal
-The goal of this test task is to develop a simple Django admin panel which purpose is to manage the content for an online store and to have multi-role support.
+### Setting Up the Project via Virtual Environment
 
-## Domain description
-The following image represents the class diagram that should be considered during development of your admin panel. This is the minimal requirements for classes and fields that we are expecting from you to add. You can make your own updates and add additional functional. All images fields should be represented as links on images. You are free to use any database, which seems suitable for you and for the project.
+1. Install project requirements:
+   ```bash
+   python3 -m venv venv
+   source venv/bin/activate
+   pip install -r requirements/develop.txt
+   ```
 
-![Class diagram](https://hb.bizmrg.com/kazanexpress/class_diagram.png)
+2. Create a `.env` file:
+   ```bash
+   cp .env.example .env
+   ```
+   Modify `DJANGO_SETTINGS_MODULE` to `config.settings.develop` and `DB_HOST` to `localhost` in the `.env` file.
 
-## Requirements
-### Shop admin
-1. Navigate through the shops list.
-2. Make a search by title.
-3. Edit everything except shop id.
-4. Upload image as shop pic.
+3. Create the database:
+   ```bash
+   sudo -u postgres psql
+   CREATE DATABASE python_task_unical;
+   ```
 
-### Product admin
-1. Navigate through product list.
-2. Search by id or product title.
-3. Edit everything except product id.
-4. First image should be displayed as main image in both list view and product view.
-5. Sort products in product list by number of orders and by price.
-6. Filter list of products by active flag.
-7. Filter by price range.
-8. Attach product to one or more categories.
+   If you prefer not to use the `postgres` user, create a new user and grant all privileges:
+   ```bash
+   CREATE USER my_user WITH PASSWORD 'password';
+   GRANT ALL PRIVILEGES ON DATABASE my_user TO python_task_unical;
+   ```
 
-### Category admin
-1. Navigate through categories list.
-2. Search by product id, title and parent category.
-3. Add one or more parent categories.
-4. Display all possible paths to chosen category.
+4. Set up the `.env` file with your database credentials:
+   ```bash
+   nano .env
+   ```
 
-### Management
-There should be at least two administrative roles for the following purposes:
-1. Moderation for products.
-2. Moderation of all available pages.
+5. Run migrations:
+   ```bash
+   python manage.py migrate
+   ```
 
-## Submission
-Fork this repository, prepare your solution and make a pull request when you're done.
-Don't forget to write docs :)
+6. Load default data:
+   ```bash
+   python manage.py loaddata data.json
+   ```
 
-## Good luck!
+7. Load media files:
+   ```bash
+   unzip media.zip
+   ```
+
+8. Run the server:
+   ```bash
+   python manage.py runserver
+   ```
+
+## Setting Up with Docker
+
+1. Create a `.env` file:
+   ```bash
+   cp .env.example .env
+   ```
+
+2. Load media files:
+   ```bash
+   unzip media.zip
+   ```
+
+3. Build and run Docker:
+   ```bash
+   docker-compose up --build
+   ```
+
+4. Load default data:
+   ```bash
+   docker exec -it PYTHON_TASK_UNICAL_backend /bin/sh
+   ```
+   Then execute:
+   ```bash
+   python manage.py loaddata data.json
+   ```
+   Restart Docker.
+
+5. Open a browser and go to `http://localhost:8000/`. Use the following superuser credentials: `admin`/`admin`.
+
+### Additional Steps
+
+- **Pre-commit Hook:**
+  Install and configure pre-commit hook:
+  ```bash
+  pip install pre-commit
+  pre-commit install
+  ```
+
+- **Running Tests:**
+  Execute tests with the following command:
+  ```bash
+  python manage.py test
+  ```
+
+---
+[Task Description](task_description.md)
+
+Here is the additional update made to the models:
+
+- **User Model:**
+    - **Shop:** This field allows associating a user with a particular shop, facilitating management and ownership
+      within the system.
+
+
+- **Category Model:**
+    - **Order:** This field allows changing the sequence of categories.
+    - **Icon:** Added for better visual representation of categories.
+
+- **Product Image Model:**
+    - **Order:** This field facilitates reordering images associated with a product.
+    - **Is Main:** This addition allows specifying one image as the main picture for a product.
+
+## Existing User Roles
+
+1. **Super User:**
+    - Has unrestricted access and control over the entire system.
+
+2. **Guest:**
+    - Has read-only access to the system.
+
+3. **Moderator:**
+    - Responsible for moderating all items within the system.
+
+4. **Product Moderator:**
+    - Manages product listings across the system.
+
+5. **Shop Owner:**
+    - Manages shop information and products within their respective shops.
+
+6. **Shop Product Moderator:**
+    - Manages only the products associated with a specific shop.
