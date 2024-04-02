@@ -14,6 +14,7 @@ from apps.main.models import Category, Product, ProductImage, Shop
 class CategoryAdmin(MPTTModelAdmin):
     list_display = (
         "title",
+        "display_icon",
         "order",
         "products_count",
         "get_paths",
@@ -71,6 +72,12 @@ class CategoryAdmin(MPTTModelAdmin):
         return obj.products.count()
 
     products_count.short_description = _("Products Count")  # type: ignore
+
+    def display_icon(self, obj):
+        """Display the icon of the category."""
+        if obj.icon:
+            return mark_safe(f'<img src="{obj.icon.url}" height="50px">')
+        return mark_safe('<img src="/static/admin/no-entry.png" height="50px">')
 
 
 class ProductImageInline(ImageFieldMixin, admin.TabularInline):
