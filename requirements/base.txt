@@ -13,3 +13,4 @@ drf-yasg==1.21.7
 django-mptt==0.16.0
 django-image-uploader-widget==0.4.6
 django-admin-rangefilter==0.12.1
+django-recaptcha==4.0.0

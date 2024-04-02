@@ -50,6 +50,7 @@ THIRD_PARTY_APPS = [
     "mptt",
     "image_uploader_widget",
     "rangefilter",
+    "django_recaptcha",
 ]
 
 REST_FRAMEWORK = {
@@ -172,3 +173,6 @@ CELERY_TIMEZONE = "Asia/Tashkent"
 
 CELERY_TASK_TRACK_STARTED = True
 CELERY_TASK_TIME_LIMIT = 30 * 60
+
+RECAPTCHA_PUBLIC_KEY = env.str("RECAPTCHA_PUBLIC_KEY", "KEY")
+RECAPTCHA_PRIVATE_KEY = env.str("RECAPTCHA_PRIVATE_KEY", "SECRET")

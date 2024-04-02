@@ -82,8 +82,17 @@
 5. Open a browser and go to `http://localhost:8000/`. Use the following superuser credentials: `admin`/`admin`.
 
 ### Additional Steps
+- **Recaptcha:**
+
+  You can get key for recaptcha from [here](https://www.google.com/recaptcha/admin/create) and add it to the `.env`
+  file. Then add keys to the `.env` file:
+  ```bash
+  RECAPTCHA_SITE_KEY=your_site_key
+  RECAPTCHA_SECRET_KEY=your_secret_key
+  ```
 
 - **Pre-commit Hook:**
+
   Install and configure pre-commit hook:
   ```bash
   pip install pre-commit
