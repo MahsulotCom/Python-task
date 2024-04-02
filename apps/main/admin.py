@@ -76,8 +76,8 @@ class CategoryAdmin(MPTTModelAdmin):
     def display_icon(self, obj):
         """Display the icon of the category."""
         if obj.icon:
-            return mark_safe(f'<img src="{obj.icon.url}" height="50px">')
-        return mark_safe('<img src="/static/admin/no-entry.png" height="50px">')
+            return mark_safe(f'<img src="{obj.icon.url}" height="45px">')
+        return mark_safe('<img src="/static/admin/no-entry.png" height="45px">')
 
 
 class ProductImageInline(ImageFieldMixin, admin.TabularInline):
@@ -150,7 +150,7 @@ class ProductAdmin(admin.ModelAdmin):
 
     def formfield_for_manytomany(self, db_field, request, **kwargs):
         if db_field.name == "categories":
-            kwargs["widget"] = admin.widgets.FilteredSelectMultiple("verbose name", is_stacked=False)
+            kwargs["widget"] = admin.widgets.FilteredSelectMultiple(_("Categories"), is_stacked=False)
             kwargs["queryset"] = Category.objects.filter(children=None)
         return super().formfield_for_manytomany(db_field, request, **kwargs)
 
