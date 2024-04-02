@@ -1,44 +1,55 @@
-# UnicalExpress test for Python developer 
-Here lies the description and requirements of the test task for Python/Django Developer position applicants.
+# Online Store Admin Panel Documentation
 
-## Task goal
-The goal of this test task is to develop a simple Django admin panel which purpose is to manage the content for an online store and to have multi-role support. 
+## Welcome to the documentation for the Online Store Admin Panel. This admin panel is designed to manage the content for an online store with multi-role support. Below you will find information on how to navigate through the admin panel, perform various tasks, and understand the functionalities provided.
 
-## Domain description
-The following image represents the class diagram that should be considered during development of your admin panel. This is the minimal requirements for classes and fields that we are expecting from you to add. You can make your own updates and add additional functional. All images fields should be represented as links on images. You are free to use any database, which seems suitable for you and for the project. 
 
-![Class diagram](https://hb.bizmrg.com/kazanexpress/class_diagram.png)
 
-## Requirements
-### Shop admin
-1. Navigate through the shops list.
-2. Make a search by title.
-3. Edit everything except shop id.
-4. Upload image as shop pic. 
+## To get started with the Online Store Admin Panel, follow these steps:
 
-### Product admin
-1. Navigate through product list.
-2. Search by id or product title.
-3. Edit everything except product id.
-4. First image should be displayed as main image in both list view and product view.
-5. Sort products in product list by number of orders and by price.
-6. Filter list of products by active flag.
-7. Filter by price range.
-8. Attach product to one or more categories.
+1. Clone this repository to your local machine.
+2. Install the necessary dependencies (Django, etc.).
+3. Set up your database (SQLite, MySQL, etc.).
+4. Run the Django migrations to create the necessary tables.
+5. Start the Django development server.
+6. Access the admin panel through your web browser.
 
-### Category admin
-1. Navigate through categories list.
-2. Search by product id, title and parent category.
-3. Add one or more parent categories. 
-4. Display all possible paths to chosen category. 
+## Features
+The Online Store Admin Panel provides the following features:
 
-### Management
-There should be at least two administrative roles for the following purposes:
-1. Moderation for products. 
-2. Moderation of all available pages. 
+1. Management of shops, products, and categories.
+2. Search functionality for shops and products.
+3. Editing of shop and product details.
+4. Image upload for shop picture.
+5. Sorting products by number of orders and price.
+6. Filtering products by active flag and price range.
+7. Attachment of products to one or more categories.
+8. Multi-role support with administrative roles for moderation.
 
-## Submission
-Fork this repository, prepare your solution and make a pull request when you're done.
-Don't forget to write docs :)
+## Usage
+Shop Admin
 
-## Good luck!
+1. Navigate through the list of shops.
+2. Search for shops by title.
+3. Edit shop details except for shop ID.
+4. Upload an image as a shop picture.
+
+Product Admin
+1. Browse the list of products.
+2. Search for products by ID or title.
+3. Edit product details except for product ID.
+4. Display the first image as the main image in list view and product view.
+5. Sort products by number of orders and price.
+6. Filter products by active flag and price range.
+7. Attach products to one or more categories.
+
+Category Admin
+1. View the list of categories.
+2. Search for categories by product ID, title, or parent category.
+3. Add one or more parent categories.
+4. Display all possible paths to the chosen category.
+
+## Management Roles
+The admin panel supports two administrative roles:
+
+1. Moderation for Products: Allows moderation of products, including approval or rejection.
+2. Moderation of Pages: Allows moderation of all available pages in the admin panel.
