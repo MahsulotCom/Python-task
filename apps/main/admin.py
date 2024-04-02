@@ -189,6 +189,11 @@ class ShopAdmin(ImageFieldMixin, admin.ModelAdmin):
     fieldsets = ((None, {"fields": ("title", "description", "image")}),)
     readonly_fields = ("created_at", "updated_at")
 
+    def get_queryset(self, request):
+        if request.user.shop:
+            return super().get_queryset(request).filter(pk=request.user.shop.pk)
+        return super().get_queryset(request)
+
     def image_preview(self, obj):
         """Display the image of the shop."""
         return mark_safe(f'<img src="{obj.image.url}" height="50px">')
