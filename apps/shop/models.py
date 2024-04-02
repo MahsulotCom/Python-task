@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 from apps.common.utils import compress_image, upload
 
 

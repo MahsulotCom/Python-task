@@ -15,10 +15,10 @@ def calc_discount_total_price(product: ProductVariant, quantity: int, user: User
     today = datetime.now().date()
     total_price = None
     product_discount = Discount.objects.filter(
-        products__in=[product.product], start_date__lte=today, end_date__gte=today
+        product__in=[product.product], start_date__lte=today, end_date__gte=today
     )
     variant_discount = Discount.objects.filter(
-        product_variants__in=[product], start_date__lte=today, end_date__gte=today
+        product_variant__in=[product], start_date__lte=today, end_date__gte=today
     )
     discount = product_discount if product_discount.exists() else variant_discount
     if discount.exists():
@@ -40,32 +40,16 @@ def calc_order_total_prices(order: Order):
     order.total_price = price['sum_price']
     order.total_discount = discount['sum_discount']
     order.price_to_pay = order.total_price - order.total_discount
-    order.save(update_fields=['total_price', 'total_discount', 'price_to_pay'])
-
-
-def add_order_product(
-        user: User,
-        product: ProductVariant,
-        quantity: int,
-        order: Order = None
-):
-    if OrderProduct.objects.filter(order=order, product=product).exists():
-        raise Exception('Product already exists!')
-    OrderProduct.objects.create(
-        order=order, product=product, quantity=quantity, total_price=(product.price * quantity),
-        discount_price=calc_discount_total_price(product, quantity, user)
-    )
-    calc_order_total_prices(order)
+    order.save()
 
 
 
 def update_order_product(user: User, order_product: OrderProduct, quantity: int):
     order = order_product.order
     order_product.quantity = quantity
-    order_product.total_price = product.price * quantity
-    order_product.discount_price = calc_discount_total_price(order_product.product, quantity, user)
-    order_product.save()
-    calc_order_total_prices(order)
+    order_product.total_price = order_product.product_variant.price * quantity
+    order_product.discount_price = calc_discount_total_price(order_product.product_variant, quantity, user)
+
 
 def deleted_order_product(order_product: OrderProduct):
     order = order_product.order

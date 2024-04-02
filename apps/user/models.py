@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.validators import RegexValidator
+from django.contrib.auth.hashers import make_password
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 from apps.user.managers import CustomUserManager
@@ -51,11 +52,13 @@ class User(AbstractBaseUser, PermissionsMixin):
     role = models.CharField(max_length=32, choices=user_role, default=CUSTOMER)
     first_name = models.CharField(max_length=256, blank=True)
     last_name = models.CharField(max_length=256, blank=True)
-    phone_number = models.CharField(max_length=12, validators=(phone_regex_validator,),unique=True)
+    phone_number = models.CharField(max_length=13, validators=(phone_regex_validator,),unique=True)
     birth_date = models.DateField(null=True, blank=True)
     gender = models.CharField(max_length=16, choices=gender_choices)
     email = models.EmailField(blank=True)
     address = models.ManyToManyField(AddressModel)
+    is_staff = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=True)
 
     objects = CustomUserManager()
 
@@ -68,7 +71,16 @@ class User(AbstractBaseUser, PermissionsMixin):
     def get_full_name(self):
         return f"{self.first_name} {self.last_name}"
 
-
+    def save(self, *args, **kwargs):
+        if self.role != User.CUSTOMER:
+            self.is_staff = True
+        if self.role == User.SUPER_ADMIN:
+            self.is_superuser = True
+        if self.role == User.CUSTOMER and self.is_superuser is True:
+            self.role = User.SUPER_ADMIN
+        if not self.id:
+            self.password = make_password(self.password)
+        super(User, self).save(*args, **kwargs)
 
 
 

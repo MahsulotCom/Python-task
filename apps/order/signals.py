@@ -2,14 +2,15 @@ from django.db.models.signals import pre_save, post_save, pre_delete, post_delet
 from django.dispatch import receiver
 from apps.order.models import OrderProduct
 from apps.product.models import ProductVariant, Discount
-from apps.order.utils import add_order_product, update_order_product, deleted_order_product
+from apps.order.utils import update_order_product, deleted_order_product, calc_order_total_prices
+
+@receiver(pre_save, sender=OrderProduct)
+def check_price_detail(sender, instance, **kwargs):
+    update_order_product(instance.order.user, instance, instance.quantity)
 
 @receiver(post_save, sender=OrderProduct)
-def check_price_detail(sender, created, instance, **kwargs):
-    if created:
-        add_order_product(instance.product.user, instance.product_variant, instance.quantity, instance.order)
-    else:
-        update_order_product(instance.product.user, instance, instance.quantity)
+def check_price_detail(sender, instance, **kwargs):
+    calc_order_total_prices(instance.order)
 
 @receiver(post_delete, sender=OrderProduct)
 def delete_instance(sender, instance, **kwargs):

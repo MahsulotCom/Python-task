@@ -8,12 +8,8 @@ from apps.order.models import Order, OrderProduct
 
 
 def add_permissions(instance):
-    if instance.role == User.Customer:
-        return
-    elif instance.is_superuser is True:
-        instance.role = User.SUPER_ADMIN
-    elif instance.role == User.SUPER_ADMIN:
-        instance.is_superuser = True
+    if instance.role == User.CUSTOMER:
+        pass
     elif instance.role == User.SHOP_ADMIN:
         shop_content_type = ContentType.objects.get_for_model(Shop)
         permissions = [permission for permission in Permission.objects.filter(content_type=shop_content_type)]
@@ -27,7 +23,7 @@ def add_permissions(instance):
             permissions += [permission for permission in Permission.objects.filter(content_type=content_type)]
         instance.user_permissions.set(permissions)
     elif instance.role == User.CATEGORY_ADMIN:
-        category_content_type = ContentType.objects.get_for_models(Category)
+        category_content_type = ContentType.objects.get_for_model(Category)
         permissions = [permission for permission in Permission.objects.filter(content_type=category_content_type)]
         instance.user_permissions.set(permissions)
     elif instance.role == User.ORDER_ADMIN:
@@ -36,4 +32,5 @@ def add_permissions(instance):
         for content_type in order_content_types:
             permissions += [permission for permission in Permission.objects.filter(content_type=content_type)]
         instance.user_permissions.set(permissions)
-    instance.save()
+
+
