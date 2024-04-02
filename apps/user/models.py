@@ -33,12 +33,14 @@ class User(AbstractBaseUser, PermissionsMixin):
     SHOP_ADMIN = 'Shop Admin'
     PRODUCT_ADMIN = 'Product Admin'
     CATEGORY_ADMIN = 'Category Admin'
+    ORDER_ADMIN = 'Order Admin'
     user_role = (
         (CUSTOMER, CUSTOMER),
         (SUPER_ADMIN, SUPER_ADMIN),
         (SHOP_ADMIN, SHOP_ADMIN),
         (PRODUCT_ADMIN, PRODUCT_ADMIN),
-        (CATEGORY_ADMIN, CATEGORY_ADMIN)
+        (CATEGORY_ADMIN, CATEGORY_ADMIN),
+        (ORDER_ADMIN, ORDER_ADMIN),
     )
     MALE = 'male'
     FEMALE = 'female'

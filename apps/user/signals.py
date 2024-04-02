@@ -5,11 +5,5 @@ from apps.user.utils import add_permissions
 
 
 @receiver(post_save, sender=User)
-def create_profile(sender, instance, created, **kwargs):
-    if created:
-        add_permissions(instance)
-
-
-@receiver(post_save, sender=User)
-def update_profile(sender, instance, **kwargs):
+def user_permissions(sender, instance, **kwargs):
     add_permissions(instance)

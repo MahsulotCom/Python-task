@@ -35,6 +35,7 @@ ALLOWED_HOSTS = ["*"]
 # Application definition
 
 INSTALLED_APPS = [
+    "modeltranslation",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -46,6 +47,7 @@ INSTALLED_APPS = [
     "apps.user",
     "apps.shop",
     "apps.common",
+    "apps.order",
 ]
 
 MIDDLEWARE = [
@@ -126,9 +128,11 @@ USE_TZ = True
 
 MODELTRANSLATION_LANGUAGES = ('uz', 'en')
 MODELTRANSLATION_DEFAULT_LANGUAGE = 'uz'
-#MODELTRANSLATION_TRANSLATION_FILES = [
-#    'product.translation',
-#]
+MODELTRANSLATION_TRANSLATION_FILES = [
+    'apps.product.translation',
+    'apps.category.translation',
+    'apps.shop.translation',
+]
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
