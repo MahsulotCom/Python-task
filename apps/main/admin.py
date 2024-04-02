@@ -122,8 +122,6 @@ class ProductAdmin(admin.ModelAdmin):
         ),
     )
     readonly_fields = ("main_image_detail", "created_at", "updated_at")
-    autocomplete_fields = ("categories",)
-    filter_horizontal = ("categories",)
     list_per_page = 20
     save_as = True
     list_select_related = True
@@ -132,6 +130,22 @@ class ProductAdmin(admin.ModelAdmin):
         css = {
             "all": ("admin/css/range_filter.css",),
         }
+
+    def get_queryset(self, request):
+        if request.user.shop:
+            return super().get_queryset(request).filter(shop=request.user.shop)
+        return super().get_queryset(request)
+
+    def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        if db_field.name == "shop" and request.user.shop:
+            kwargs["queryset"] = Shop.objects.filter(pk=request.user.shop.pk).order_by("title")
+        return super().formfield_for_foreignkey(db_field, request, **kwargs)
+
+    def formfield_for_manytomany(self, db_field, request, **kwargs):
+        if db_field.name == "categories":
+            kwargs["widget"] = admin.widgets.FilteredSelectMultiple("verbose name", is_stacked=False)
+            kwargs["queryset"] = Category.objects.filter(children=None)
+        return super().formfield_for_manytomany(db_field, request, **kwargs)
 
     def main_image(self, obj, height=100):
         """Display the main image of the product."""
