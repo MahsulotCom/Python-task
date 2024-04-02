@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     "apps.category",
     "apps.product",
     "apps.user",
+    "apps.shop",
+    "apps.common",
 ]
 
 MIDDLEWARE = [
@@ -142,5 +144,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
-#AUTH_USER_MODEL = "user.UserModel"
+AUTH_USER_MODEL = "user.User"
 IMAGE_SIZE_TO_COMPRESS = 1024 * 1024
