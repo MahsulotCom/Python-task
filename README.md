@@ -1,15 +1,11 @@
-# UnicalExpress test for Python developer 
-Here lies the description and requirements of the test task for Python/Django Developer position applicants.
+# 📦 Product Management
 
-## Task goal
-The goal of this test task is to develop a simple Django admin panel which purpose is to manage the content for an online store and to have multi-role support. 
+## 📝 Description
 
-## Domain description
-The following image represents the class diagram that should be considered during development of your admin panel. This is the minimal requirements for classes and fields that we are expecting from you to add. You can make your own updates and add additional functional. All images fields should be represented as links on images. You are free to use any database, which seems suitable for you and for the project. 
+Admin panel for managing products, shops and categories.
 
-![Class diagram](https://hb.bizmrg.com/kazanexpress/class_diagram.png)
+## 📄 Features
 
-## Requirements
 ### Shop admin
 1. Navigate through the shops list.
 2. Make a search by title.
@@ -32,13 +28,86 @@ The following image represents the class diagram that should be considered durin
 3. Add one or more parent categories. 
 4. Display all possible paths to chosen category. 
 
+### Image admin
+1. Upload images for products, shops.
+2. You can upload multiple images.
+3. Main image should be displayed in product/shop view.
+
 ### Management
-There should be at least two administrative roles for the following purposes:
+There are two administrative roles for the following purposes:
 1. Moderation for products. 
 2. Moderation of all available pages. 
 
-## Submission
-Fork this repository, prepare your solution and make a pull request when you're done.
-Don't forget to write docs :)
 
-## Good luck!
+## 💻 Technology
+
+| Technology            | Use                           |
+| --------------------- | ----------------------------- |
+| Python                | Main programming language     |
+| Django                | Web framework                 |
+| SQLite                | Database                      |
+
+
+## 🚀 Getting Started
+
+1. Clone the repository
+
+    ```bash
+    git clone https://github.com/ShokhrukhbekYuldoshev/Python-task.git
+    ```
+
+    ```bash
+    cd your-repo
+    ```
+
+
+2. Run the migrations
+
+    ```bash
+    python manage.py migrate
+    ```
+
+3. Create a virtual environment
+
+    ```bash
+    python -m venv .venv
+    ```
+
+4. Install requirements
+
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+5. Activate the virtual environment:
+
+    For Linux/MacOS:
+
+    ```bash
+    source .venv/bin/activate
+    ```
+
+    For Windows:
+
+    ```bash
+    .venv\Scripts\activate
+    ```
+
+6. Run the server
+
+    ```bash
+    python manage.py runserver
+    ```
+
+7. Go to http://localhost:8000/admin    
+
+## 🚀 Additional information
+
+There are two groups of users:
+
+1. Moderator: Can create, edit and delete products, shops, categories and images.
+2. Product manager: Can create, edit and delete only products.
+
+Login as moderator: username: test, password: test
+
+Login as product manager: username: test2, password: testqwerty
