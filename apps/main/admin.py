@@ -6,6 +6,7 @@ from django.utils.translation import gettext_lazy as _
 from mptt.admin import MPTTModelAdmin
 
 from apps.common.mixins import ImageFieldMixin
+from apps.main.filters import PriceRangeFilter
 from apps.main.models import Category, Product, ProductImage, Shop
 
 
@@ -97,7 +98,10 @@ class ProductAdmin(admin.ModelAdmin):
         "categories__title",
     )
     list_display_links = ("title",)
-    list_filter = ("categories", "active", "shop")
+    # we have a problem with dynamic range filters
+    # list_filter = (("price", NumericRangeFilter), "categories", "active", "shop",)
+    list_filter = ("categories", "active", "shop", PriceRangeFilter)
+
     list_editable = ("amount", "price", "active")
     inlines = (ProductImageInline,)
     fieldsets = (
@@ -123,6 +127,11 @@ class ProductAdmin(admin.ModelAdmin):
     list_per_page = 20
     save_as = True
     list_select_related = True
+
+    class Media:
+        css = {
+            "all": ("admin/css/range_filter.css",),
+        }
 
     def main_image(self, obj, height=100):
         """Display the main image of the product."""
