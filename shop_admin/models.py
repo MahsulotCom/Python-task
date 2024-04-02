@@ -20,15 +20,17 @@ class Shop(models.Model):
 
 
 class Product(models.Model):
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    category = models.ManyToManyField(Category)
     title=models.CharField(max_length=220)
     description=models.TextField()
     amount=models.IntegerField()
     price=models.FloatField()
-    images=models.JSONField()
+    images=models.TextField()
     active=models.BooleanField(default=False)
     created_at=models.DateTimeField(auto_now_add=True)
     
     def __str__(self):
-        return f"{self.category.title} || {self.title} || {self.active} || {self.created_at}"
+        category_titles = ', '.join(category.title for category in self.category.all())
+        return f"{category_titles} || {self.title} || {self.active} || {self.created_at}"
     
+   
