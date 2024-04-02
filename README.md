@@ -1,4 +1,4 @@
-# UnicalExpress test for Python developer 
+# UnicalExpress test for Python developers!
 Here lies the description and requirements of the test task for Python/Django Developer position applicants.
 
 ## Task goal
