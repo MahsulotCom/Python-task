@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete {{ obj.title }}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        .confirm-delete {
+            max-width: 300px;
+            margin: 0 auto;
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        p {
+            margin-bottom: 30px;
+        }
+        .btn-wrapper {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px; /* Adjust margin as needed */
+        }
+        button[type="submit"], .btn-primary {
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button[type="submit"] {
+            background-color: #dc3545;
+            color: #fff;
+            border: none;
+        }
+        button[type="submit"]:hover {
+            background-color: #c82333;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="confirm-delete">
+        <h1>Delete "{{ obj.title }}"</h1>
+        <p>Are you sure you want to delete "{{ obj.title }}"?</p>
+        <div class="btn-wrapper">
+            <form action="" method="post">
+                {% csrf_token %}
+                <button type="submit">Delete</button>
+            </form>
+            <a href="{% url 'home_page' %}">
+                <button class="btn btn-primary">Cancel</button>
+            </a>
+        </div>
+    </div>
+</body>
+</html>
