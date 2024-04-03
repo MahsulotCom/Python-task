@@ -24,7 +24,7 @@ SECRET_KEY = 'django-insecure-71vin=n(c))8m(!0gmj)za$1ef89pujf@4!w5r1_9ls4tm8#)&
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -67,6 +67,15 @@ TEMPLATES = [
         },
     },
 ]
+
+CORS_ALLOWED_ORIGINS = [
+    "https://142.93.80.85:8080"
+    "http://142.93.180.85:8080",
+    "http://127.0.0.1:8000",
+    'http://167.99.58.148',
+]
+
+CSRF_TRUSTED_ORIGINS = ['http://167.99.58.148']
 
 WSGI_APPLICATION = 'UnicalShop.wsgi.application'
 
