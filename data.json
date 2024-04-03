@@ -1,0 +1,960 @@
+[
+  {
+    "model": "main.category",
+    "pk": 1,
+    "fields": {
+      "created_at": "2024-04-01T02:29:16.568Z",
+      "updated_at": "2024-04-02T07:23:47.250Z",
+      "title": "Elektronika",
+      "description": "ElektronikaElektronikaElektronikaElektronikaElektronikaElektronikaElektronikaElektronikaElektronikaElektronikaElektronika",
+      "order": 1,
+      "icon": "icons/headphones.png",
+      "parent": null,
+      "lft": 1,
+      "rght": 12,
+      "tree_id": 1,
+      "level": 0
+    }
+  },
+  {
+    "model": "main.category",
+    "pk": 2,
+    "fields": {
+      "created_at": "2024-04-01T02:29:33.310Z",
+      "updated_at": "2024-04-02T01:11:41.824Z",
+      "title": "Kiyim",
+      "description": "KiyimKiyimKiyimKiyimKiyimKiyimKiyimKiyimKiyim",
+      "order": 3,
+      "icon": "",
+      "parent": null,
+      "lft": 1,
+      "rght": 6,
+      "tree_id": 2,
+      "level": 0
+    }
+  },
+  {
+    "model": "main.category",
+    "pk": 3,
+    "fields": {
+      "created_at": "2024-04-01T02:29:51.973Z",
+      "updated_at": "2024-04-02T01:11:41.833Z",
+      "title": "Aksessuarlar",
+      "description": "AksessuarlarAksessuarlarAksessuarlarAksessuarlarAksessuarlar",
+      "order": 2,
+      "icon": "",
+      "parent": null,
+      "lft": 1,
+      "rght": 2,
+      "tree_id": 3,
+      "level": 0
+    }
+  },
+  {
+    "model": "main.category",
+    "pk": 4,
+    "fields": {
+      "created_at": "2024-04-01T02:30:18.222Z",
+      "updated_at": "2024-04-01T02:32:49.056Z",
+      "title": "Smartfonlar va telefonlar",
+      "description": "Smartfonlar va telefonlar  Smartfonlar va telefonlar  Smartfonlar va telefonlar  Smartfonlar va telefonlar  Smartfonlar va telefonlar  Smartfonlar va telefonlar  Smartfonlar va telefonlar",
+      "order": 1,
+      "icon": "",
+      "parent": 1,
+      "lft": 2,
+      "rght": 9,
+      "tree_id": 1,
+      "level": 1
+    }
+  },
+  {
+    "model": "main.category",
+    "pk": 5,
+    "fields": {
+      "created_at": "2024-04-01T02:30:47.409Z",
+      "updated_at": "2024-04-01T06:34:41.084Z",
+      "title": "Noutbuklar, planshetlar va elektron kitoblar",
+      "description": "Noutbuklar, planshetlar va elektron kitoblar  Noutbuklar, planshetlar va elektron kitoblar  Noutbuklar, planshetlar va elektron kitoblar  Noutbuklar, planshetlar va elektron kitoblar  Noutbuklar, planshetlar va elektron kitoblar",
+      "order": 2,
+      "icon": "",
+      "parent": 1,
+      "lft": 10,
+      "rght": 11,
+      "tree_id": 1,
+      "level": 1
+    }
+  },
+  {
+    "model": "main.category",
+    "pk": 6,
+    "fields": {
+      "created_at": "2024-04-01T02:31:03.205Z",
+      "updated_at": "2024-04-01T02:36:40.227Z",
+      "title": "Smartfonlar uchun aksessuarlar",
+      "description": "Smartfonlar uchun aksessuarlar  Smartfonlar uchun aksessuarlar  Smartfonlar uchun aksessuarlar  Smartfonlar uchun aksessuarlar  Smartfonlar uchun aksessuarlar  Smartfonlar uchun aksessuarlar  Smartfonlar uchun aksessuarlar",
+      "order": 1,
+      "icon": "",
+      "parent": 4,
+      "lft": 3,
+      "rght": 4,
+      "tree_id": 1,
+      "level": 2
+    }
+  },
+  {
+    "model": "main.category",
+    "pk": 7,
+    "fields": {
+      "created_at": "2024-04-01T02:31:18.609Z",
+      "updated_at": "2024-04-01T02:32:49.058Z",
+      "title": "Smartfonlar",
+      "description": "Smartfonlar  Smartfonlar  Smartfonlar  Smartfonlar  Smartfonlar  Smartfonlar  Smartfonlar  Smartfonlar  Smartfonlar",
+      "order": 2,
+      "icon": "",
+      "parent": 4,
+      "lft": 5,
+      "rght": 6,
+      "tree_id": 1,
+      "level": 2
+    }
+  },
+  {
+    "model": "main.category",
+    "pk": 8,
+    "fields": {
+      "created_at": "2024-04-01T02:31:39.274Z",
+      "updated_at": "2024-04-01T02:32:54.336Z",
+      "title": "Knopkali telefonlar",
+      "description": "Knopkali telefonlar  Knopkali telefonlar  Knopkali telefonlar  Knopkali telefonlar  Knopkali telefonlar  Knopkali telefonlar",
+      "order": 3,
+      "icon": "",
+      "parent": 4,
+      "lft": 7,
+      "rght": 8,
+      "tree_id": 1,
+      "level": 2
+    }
+  },
+  {
+    "model": "main.category",
+    "pk": 9,
+    "fields": {
+      "created_at": "2024-04-01T02:32:11.818Z",
+      "updated_at": "2024-04-02T01:11:41.832Z",
+      "title": "Ayollar kiyimi",
+      "description": "Ayollar kiyimi  Ayollar kiyimi  Ayollar kiyimi  Ayollar kiyimi  Ayollar kiyimi",
+      "order": 0,
+      "icon": "",
+      "parent": 2,
+      "lft": 2,
+      "rght": 3,
+      "tree_id": 2,
+      "level": 1
+    }
+  },
+  {
+    "model": "main.category",
+    "pk": 10,
+    "fields": {
+      "created_at": "2024-04-01T02:32:25.593Z",
+      "updated_at": "2024-04-02T01:11:41.831Z",
+      "title": "Erkaklar kiyimi",
+      "description": "Erkaklar kiyimi  Erkaklar kiyimi  Erkaklar kiyimi  Erkaklar kiyimi  Erkaklar kiyimi",
+      "order": 1,
+      "icon": "",
+      "parent": 2,
+      "lft": 4,
+      "rght": 5,
+      "tree_id": 2,
+      "level": 1
+    }
+  },
+  {
+    "model": "main.product",
+    "pk": 1,
+    "fields": {
+      "created_at": "2024-04-01T06:54:01.767Z",
+      "updated_at": "2024-04-01T13:42:32.332Z",
+      "title": "Telefon 105 knopkali telefon, Dual SIM, FM radio, chiroq",
+      "description": "Mobil telefon 105 Dual Sim Blue Mobil telefon\r\n\r\nTelefon 105 - bu SIM-kartalar uchun ikkita uyaga ega klassik tugmachali telefon modeli.\r\n\r\nTelefon aloqa uchun ishonchli qurilmaga muhtoj bo'lganlar uchun juda mos keladi.\r\n\r\nUning akkumulyator sig‘imi 800 mA/soat bo‘lib, u 12,5 soat suhbat va 842 soat kutish rejimida uzluksiz ishlashni ta’minlaydi",
+      "amount": 10,
+      "price": 190000.0,
+      "shop": 3,
+      "active": true,
+      "categories": [
+        8
+      ]
+    }
+  },
+  {
+    "model": "main.product",
+    "pk": 2,
+    "fields": {
+      "created_at": "2024-04-01T07:23:06.137Z",
+      "updated_at": "2024-04-01T13:42:27.551Z",
+      "title": "Smartfon Samsung Galaxy A15, 6/128 GB, 6.5\" Super AMOLED 90 Hz, Dual nano SIM",
+      "description": "Protsessor: MediaTek Helio G99\r\nDispley: 6.5\" (2340×1080), Super AMOLED 90Hz\r\nAutentifikatsiya: barmoq izi skaneri yon tomonda\r\nZaryadlovchi ulagich turi: Type-C\r\nVideo suratga olish (asosiy kamera): 1080p@30fps\r\nBatareya quvvati: 5000 mA/soat\r\nSotuvni boshlash uchun OS versiyasi: Android 14\r\nSIM-kartalar soni: Dual nano SIM",
+      "amount": 30,
+      "price": 1978000.0,
+      "shop": 3,
+      "active": true,
+      "categories": [
+        7
+      ]
+    }
+  },
+  {
+    "model": "main.product",
+    "pk": 3,
+    "fields": {
+      "created_at": "2024-04-01T13:46:33.751Z",
+      "updated_at": "2024-04-01T13:46:47.855Z",
+      "title": "Erkaklar uchun futbolka Playowo",
+      "description": "Erkaklar futbolkasi. Naqshsiz oddiy futbolka. 100% paxtadan tayyorlangan. Yumshoq va yoqimli mato. To'g'ri mos. Asosiy futbolka. Klassik yumaloq bo'yinbog'li futbolka sizsiz o'tib bo'lmaydigan asosiy qismlardan biridir. Erkaklar uchun futbolkalar erkak uchun eng yaxshi sovg'adir. Faqat kundalik kiyim uchun emas, balki sport uchun ham mos keladi. Erkaklar uchun oddiy futbolka juda ko'p qirrali, aşınmaya bardoshli. Katta oʻlchamli ayollar futbolkasi yoki bir oʻlcham katta qilib kiyish mumkin. Agar siz uni 1-2 o'lchamga kattaroq xarid qilsangiz, u katta o'lchamli futbolka sifatida kiyiladi, har qanday holatda ham u har kuni, uyda, sport yoki fitnes uchun yoki shunchaki futbolka uchun ajoyib asosiy futbolkadir. - uxlash uchun ko'ylak. Erkaklar uchun katta o'lchamli futbolkalar ko'pincha o'smirlar uchun buyurtma qilinadi. Playowo mahsulotlari o'zimizda ishlab chiqilgan va ishlab chiqarilgan.",
+      "amount": 100,
+      "price": 49000.0,
+      "shop": 4,
+      "active": true,
+      "categories": [
+        10
+      ]
+    }
+  },
+  {
+    "model": "main.product",
+    "pk": 4,
+    "fields": {
+      "created_at": "2024-04-01T14:47:40.843Z",
+      "updated_at": "2024-04-02T01:19:39.939Z",
+      "title": "Uzun libos ayollar va qizlar uchun, oversayz Didov Triko",
+      "description": "Har qanday ob-havo uchun ideal.\r\nBo'yi kuylakni - 120/125 sm\r\nEni kuylakni - 54/60 sm\r\nTo'qilgan kuylak, yumshoq, zamonaviy, sifatli.\r\nOversize - (48dan / 58 gacha) o'lchamgacha bo'ladi\r\nKesiqsiz",
+      "amount": 10,
+      "price": 159000.0,
+      "shop": 4,
+      "active": true,
+      "categories": [
+        9
+      ]
+    }
+  },
+  {
+    "model": "main.productimage",
+    "pk": 1,
+    "fields": {
+      "created_at": "2024-04-01T07:04:33.586Z",
+      "updated_at": "2024-04-01T07:07:11.071Z",
+      "product": 1,
+      "image": "product_images/cmdnd8925ku1lubrfbqg.jpg",
+      "order": 0,
+      "is_main": true
+    }
+  },
+  {
+    "model": "main.productimage",
+    "pk": 2,
+    "fields": {
+      "created_at": "2024-04-01T07:04:33.589Z",
+      "updated_at": "2024-04-01T07:07:11.072Z",
+      "product": 1,
+      "image": "product_images/cmdnd8925ku1lubrfbq0.jpg",
+      "order": 0,
+      "is_main": false
+    }
+  },
+  {
+    "model": "main.productimage",
+    "pk": 3,
+    "fields": {
+      "created_at": "2024-04-01T07:04:33.591Z",
+      "updated_at": "2024-04-01T07:07:01.486Z",
+      "product": 1,
+      "image": "product_images/cmdnd83ifoubkc6naim0.jpg",
+      "order": 0,
+      "is_main": false
+    }
+  },
+  {
+    "model": "main.productimage",
+    "pk": 4,
+    "fields": {
+      "created_at": "2024-04-01T07:23:06.141Z",
+      "updated_at": "2024-04-01T07:23:06.141Z",
+      "product": 2,
+      "image": "product_images/cnuq4tupom4ma10qf9pg.jpg",
+      "order": 0,
+      "is_main": false
+    }
+  },
+  {
+    "model": "main.productimage",
+    "pk": 5,
+    "fields": {
+      "created_at": "2024-04-01T07:23:06.142Z",
+      "updated_at": "2024-04-01T07:23:06.142Z",
+      "product": 2,
+      "image": "product_images/cnuq4tv2u18gghcl4ju0.jpg",
+      "order": 1,
+      "is_main": false
+    }
+  },
+  {
+    "model": "main.productimage",
+    "pk": 6,
+    "fields": {
+      "created_at": "2024-04-01T07:23:06.143Z",
+      "updated_at": "2024-04-01T07:23:24.271Z",
+      "product": 2,
+      "image": "product_images/cnuq4tv2u18gghcl4jug.jpg",
+      "order": 0,
+      "is_main": false
+    }
+  },
+  {
+    "model": "main.productimage",
+    "pk": 7,
+    "fields": {
+      "created_at": "2024-04-01T13:46:47.857Z",
+      "updated_at": "2024-04-01T13:46:47.857Z",
+      "product": 3,
+      "image": "product_images/cg81di7g49devoaai5g0.jpg",
+      "order": 0,
+      "is_main": true
+    }
+  },
+  {
+    "model": "main.productimage",
+    "pk": 8,
+    "fields": {
+      "created_at": "2024-04-01T13:46:47.863Z",
+      "updated_at": "2024-04-01T13:46:47.863Z",
+      "product": 3,
+      "image": "product_images/clncuonn7c6gg9idq6g0.jpg",
+      "order": 0,
+      "is_main": false
+    }
+  },
+  {
+    "model": "main.productimage",
+    "pk": 9,
+    "fields": {
+      "created_at": "2024-04-01T13:46:47.865Z",
+      "updated_at": "2024-04-01T13:46:47.865Z",
+      "product": 3,
+      "image": "product_images/clncuonn7c6gg9idq6g0_g1kz8qB.jpg",
+      "order": 0,
+      "is_main": false
+    }
+  },
+  {
+    "model": "main.productimage",
+    "pk": 10,
+    "fields": {
+      "created_at": "2024-04-01T14:48:01.284Z",
+      "updated_at": "2024-04-01T14:48:01.284Z",
+      "product": 4,
+      "image": "product_images/cn878t925kub33f413o0.jpg",
+      "order": 2,
+      "is_main": false
+    }
+  },
+  {
+    "model": "main.productimage",
+    "pk": 11,
+    "fields": {
+      "created_at": "2024-04-01T14:48:01.285Z",
+      "updated_at": "2024-04-01T14:48:01.285Z",
+      "product": 4,
+      "image": "product_images/cn878t125kub33f413ng.jpg",
+      "order": 0,
+      "is_main": true
+    }
+  },
+  {
+    "model": "main.productimage",
+    "pk": 12,
+    "fields": {
+      "created_at": "2024-04-01T14:48:01.286Z",
+      "updated_at": "2024-04-01T14:48:01.286Z",
+      "product": 4,
+      "image": "product_images/cn878t9s99ouqbfuqpdg.jpg",
+      "order": 1,
+      "is_main": false
+    }
+  },
+  {
+    "model": "main.shop",
+    "pk": 3,
+    "fields": {
+      "created_at": "2024-04-01T13:42:20.927Z",
+      "updated_at": "2024-04-01T13:42:20.927Z",
+      "title": "AliTech Stores",
+      "description": "AliTech Stores: Where Innovation Meets Mobility, Elevating Your Digital Experience Through Cutting Edge Mobile Accessories",
+      "image": "shop_images/download_1.png"
+    }
+  },
+  {
+    "model": "main.shop",
+    "pk": 4,
+    "fields": {
+      "created_at": "2024-04-01T13:45:08.251Z",
+      "updated_at": "2024-04-01T13:45:08.251Z",
+      "title": "VIP BRAND",
+      "description": "Discover unparalleled elegance and sophistication at VIP BRAND Clothes Shop. From chic casual wear to timeless evening attire, our curated collection ensures you'll always make a statement with style.",
+      "image": "shop_images/download.jpeg"
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$600000$Xv5NRj2f0DZxEMohHpTddh$gq/Nk1Ha2RYSAKa6t6SaeAHTIKHgN9RTUMSzY+dWCwk=",
+      "last_login": "2024-04-02T13:17:01.766Z",
+      "is_superuser": true,
+      "username": "admin",
+      "first_name": "",
+      "last_name": "",
+      "email": "",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2024-04-01T12:41:44.921Z",
+      "created_at": "2024-04-01T12:41:45.255Z",
+      "updated_at": "2024-04-01T12:41:45.255Z",
+      "shop": null,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 2,
+    "fields": {
+      "password": "pbkdf2_sha256$600000$Mzh1uZTjJuDqL6H40E9l10$wDd9xYFxFYJCuoSDvwzU01rbBo3ZB5bVurnkkGxp4nk=",
+      "last_login": "2024-04-02T07:11:00.155Z",
+      "is_superuser": false,
+      "username": "moderator_vip_brand",
+      "first_name": "",
+      "last_name": "",
+      "email": "",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2024-04-02T06:35:50.887Z",
+      "created_at": "2024-04-02T06:35:51.275Z",
+      "updated_at": "2024-04-02T07:09:27.860Z",
+      "shop": 4,
+      "groups": [
+        1
+      ],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 3,
+    "fields": {
+      "password": "pbkdf2_sha256$600000$YPpJ134Kf1SU2UIEWvkqZS$z9vxMT179AHsyQvtoxdkKDF6bqKBka/J4nohQEJYa80=",
+      "last_login": "2024-04-02T07:03:44.401Z",
+      "is_superuser": false,
+      "username": "owner_vip_brand",
+      "first_name": "",
+      "last_name": "",
+      "email": "",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2024-04-02T06:36:13.586Z",
+      "created_at": "2024-04-02T06:36:13.996Z",
+      "updated_at": "2024-04-02T07:09:10.730Z",
+      "shop": 3,
+      "groups": [
+        2
+      ],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 4,
+    "fields": {
+      "password": "pbkdf2_sha256$600000$0y3BO5gDYvX8d5HHY6B95D$+pt7q59D8B/zcTj7qetI/hbsNBtA7rdBlFa5LLWA5eo=",
+      "last_login": "2024-04-02T07:11:16.099Z",
+      "is_superuser": false,
+      "username": "moderator",
+      "first_name": "",
+      "last_name": "",
+      "email": "",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2024-04-02T07:09:44.007Z",
+      "created_at": "2024-04-02T07:09:44.418Z",
+      "updated_at": "2024-04-02T07:10:40.755Z",
+      "shop": null,
+      "groups": [
+        4
+      ],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 5,
+    "fields": {
+      "password": "pbkdf2_sha256$600000$qxG04qzOb0DdXSuWfhoZXd$5Qty+8JdeyEqV0t7P53981ibEm3nqqG6z+VhaPFLmlg=",
+      "last_login": "2024-04-02T07:11:34.492Z",
+      "is_superuser": false,
+      "username": "product_moderator",
+      "first_name": "",
+      "last_name": "",
+      "email": "",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2024-04-02T07:10:13.186Z",
+      "created_at": "2024-04-02T07:10:13.573Z",
+      "updated_at": "2024-04-02T07:10:28.490Z",
+      "shop": null,
+      "groups": [
+        3
+      ],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.group",
+    "pk": 1,
+    "fields": {
+      "name": "Shop Product moderator",
+      "permissions": [
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ]
+    }
+  },
+  {
+    "model": "auth.group",
+    "pk": 2,
+    "fields": {
+      "name": "Shop Owner",
+      "permissions": [
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        38,
+        40
+      ]
+    }
+  },
+  {
+    "model": "auth.group",
+    "pk": 3,
+    "fields": {
+      "name": "Product Moderator",
+      "permissions": [
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ]
+    }
+  },
+  {
+    "model": "auth.group",
+    "pk": 4,
+    "fields": {
+      "name": "Moderator",
+      "permissions": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40
+      ]
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 1,
+    "fields": {
+      "name": "Can add log entry",
+      "content_type": 1,
+      "codename": "add_logentry"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 2,
+    "fields": {
+      "name": "Can change log entry",
+      "content_type": 1,
+      "codename": "change_logentry"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 3,
+    "fields": {
+      "name": "Can delete log entry",
+      "content_type": 1,
+      "codename": "delete_logentry"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 4,
+    "fields": {
+      "name": "Can view log entry",
+      "content_type": 1,
+      "codename": "view_logentry"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 5,
+    "fields": {
+      "name": "Can add permission",
+      "content_type": 2,
+      "codename": "add_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 6,
+    "fields": {
+      "name": "Can change permission",
+      "content_type": 2,
+      "codename": "change_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 7,
+    "fields": {
+      "name": "Can delete permission",
+      "content_type": 2,
+      "codename": "delete_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 8,
+    "fields": {
+      "name": "Can view permission",
+      "content_type": 2,
+      "codename": "view_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 9,
+    "fields": {
+      "name": "Can add group",
+      "content_type": 3,
+      "codename": "add_group"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 10,
+    "fields": {
+      "name": "Can change group",
+      "content_type": 3,
+      "codename": "change_group"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 11,
+    "fields": {
+      "name": "Can delete group",
+      "content_type": 3,
+      "codename": "delete_group"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 12,
+    "fields": {
+      "name": "Can view group",
+      "content_type": 3,
+      "codename": "view_group"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 13,
+    "fields": {
+      "name": "Can add content type",
+      "content_type": 4,
+      "codename": "add_contenttype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 14,
+    "fields": {
+      "name": "Can change content type",
+      "content_type": 4,
+      "codename": "change_contenttype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 15,
+    "fields": {
+      "name": "Can delete content type",
+      "content_type": 4,
+      "codename": "delete_contenttype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 16,
+    "fields": {
+      "name": "Can view content type",
+      "content_type": 4,
+      "codename": "view_contenttype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 17,
+    "fields": {
+      "name": "Can add session",
+      "content_type": 5,
+      "codename": "add_session"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 18,
+    "fields": {
+      "name": "Can change session",
+      "content_type": 5,
+      "codename": "change_session"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 19,
+    "fields": {
+      "name": "Can delete session",
+      "content_type": 5,
+      "codename": "delete_session"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 20,
+    "fields": {
+      "name": "Can view session",
+      "content_type": 5,
+      "codename": "view_session"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 21,
+    "fields": {
+      "name": "Can add User",
+      "content_type": 6,
+      "codename": "add_user"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 22,
+    "fields": {
+      "name": "Can change User",
+      "content_type": 6,
+      "codename": "change_user"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 23,
+    "fields": {
+      "name": "Can delete User",
+      "content_type": 6,
+      "codename": "delete_user"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 24,
+    "fields": {
+      "name": "Can view User",
+      "content_type": 6,
+      "codename": "view_user"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 25,
+    "fields": {
+      "name": "Can add Category",
+      "content_type": 7,
+      "codename": "add_category"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 26,
+    "fields": {
+      "name": "Can change Category",
+      "content_type": 7,
+      "codename": "change_category"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 27,
+    "fields": {
+      "name": "Can delete Category",
+      "content_type": 7,
+      "codename": "delete_category"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 28,
+    "fields": {
+      "name": "Can view Category",
+      "content_type": 7,
+      "codename": "view_category"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 29,
+    "fields": {
+      "name": "Can add Product",
+      "content_type": 8,
+      "codename": "add_product"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 30,
+    "fields": {
+      "name": "Can change Product",
+      "content_type": 8,
+      "codename": "change_product"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 31,
+    "fields": {
+      "name": "Can delete Product",
+      "content_type": 8,
+      "codename": "delete_product"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 32,
+    "fields": {
+      "name": "Can view Product",
+      "content_type": 8,
+      "codename": "view_product"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 33,
+    "fields": {
+      "name": "Can add Product Image",
+      "content_type": 9,
+      "codename": "add_productimage"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 34,
+    "fields": {
+      "name": "Can change Product Image",
+      "content_type": 9,
+      "codename": "change_productimage"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 35,
+    "fields": {
+      "name": "Can delete Product Image",
+      "content_type": 9,
+      "codename": "delete_productimage"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 36,
+    "fields": {
+      "name": "Can view Product Image",
+      "content_type": 9,
+      "codename": "view_productimage"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 37,
+    "fields": {
+      "name": "Can add Shop",
+      "content_type": 10,
+      "codename": "add_shop"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 38,
+    "fields": {
+      "name": "Can change Shop",
+      "content_type": 10,
+      "codename": "change_shop"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 39,
+    "fields": {
+      "name": "Can delete Shop",
+      "content_type": 10,
+      "codename": "delete_shop"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 40,
+    "fields": {
+      "name": "Can view Shop",
+      "content_type": 10,
+      "codename": "view_shop"
+    }
+  }
+]
