@@ -1,0 +1,71 @@
+{% extends 'app/main/base.html' %}
+{% load static %}
+{% block content %}
+    <div class="app-content p6 pb2 smp1">
+        <div class="container-fluid p0">
+            <!-- Page Top Start -->
+            <div class="row mb6 align-items-center">
+                <div class="col-md-12 mobile-bottom-fix">
+                    <h1 class="page-title mb2">Kurs qo'shish</h1>
+                    <nav class="breadcrumb-nav" aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item"><a href="projects-ecommerce-products.html">Kurslar</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Kurs qo'shish</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+            <!-- Page Top End -->
+
+            <!-- Content Start -->
+            <form method="post" action="{% url 'add' %}" id="addcategory">
+                {% csrf_token %}
+                <div class="row mb5">
+                    <!-- Left Column Start -->
+                    <div class="col-xxl-8">
+                        <div class="row">
+                            <!-- General Start -->
+                            <div class="col-12 mb6">
+                                <div class="card shadow-card p6">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <h6 class="mb4">Umumiy</h6>
+                                        </div>
+                                        <div class="col-12 mb5">
+                                            <label for="add-form-1" class="form-label">
+                                                <span>Kurs nomi</span>
+                                                <span class="text-danger">*</span>
+                                                <i data-feather="info" stroke-width="2" width="12" class="text-body"
+                                                   data-bs-toggle="tooltip" data-bs-placement="right"
+                                                   data-bs-custom-class="qd-tooltip"
+                                                   data-bs-title="Type a name for the product."></i>
+                                            </label>
+                                            <input id="add-form-1" class="form-control slug-target" type="text"
+                                                   name="title">
+                                            <div class="invalid-feedback">Please fill out all fields.</div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- General End -->
+
+                            <!-- Meta Options End -->
+                        </div>
+                    </div>
+
+
+                    <!-- Buttons Start -->
+                    <div class="col-12 text-end">
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                    <!-- Buttons End -->
+                </div>
+
+                <!-- Content End -->
+            </form>
+        </div>
+
+    </div>
+{% endblock %}

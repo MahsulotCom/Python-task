@@ -1,0 +1,245 @@
+{% extends 'app/main/base.html' %}
+{% load static %}
+{% block content %}
+    <div class="app-content p6 pb2 smp1">
+        <div class="container-fluid p0">
+            <!-- Page Top Start -->
+            <div class="row mb6 align-items-center">
+                <div class="col-md-12 mobile-bottom-fix">
+                    <h1 class="page-title mb2">Student qo'shish</h1>
+                    <nav class="breadcrumb-nav" aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item"><a href="projects-ecommerce-products.html">Studentlar</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Student qo'shish</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+            <!-- Page Top End -->
+
+            <!-- Content Start -->
+            <form method="post" action="{% url 'add-student' %}" >
+                {% csrf_token %}
+                <div class="row mb5">
+                    <!-- Left Column Start -->
+                    <div class="col-xxl-8">
+                        <div class="row">
+                            <!-- General Start -->
+                            <div class="col-12 mb6">
+                                <div class="card shadow-card p6">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <h6 class="mb4">Umumiy</h6>
+                                        </div>
+                                        <div class="col-12 mb5">
+                                            <label for="add-form-6" class="form-label">
+                                                <span>Kurs kategoriya</span>
+                                                <span class="text-danger">*</span>
+                                                <i data-feather="info" stroke-width="2" width="12" class="text-body"
+                                                   data-bs-toggle="tooltip" data-bs-placement="right"
+                                                   data-bs-custom-class="qd-tooltip"
+                                                   data-bs-title="Select if the category will be a subcategory of another category."></i>
+                                            </label>
+                                            <select id="add-form-6" class="form-select js-choice" required name="course">
+                                                {% for course in courses %}
+                                                <option value="{{ course.id }}" style="color: black">{{ course.title }} </option>
+                                                {% endfor %}
+{#
+                                            </select>
+                                            <div class="invalid-feedback">Please select a category.</div>
+                                        </div>
+                                        <div class="col-12 mb5">
+                                            <label for="add-form-1" class="form-label">
+                                                <span>O'quvchi ismi</span>
+                                                <span class="text-danger">*</span>
+                                                <i data-feather="info" stroke-width="2" width="12" class="text-body"
+                                                   data-bs-toggle="tooltip" data-bs-placement="right"
+                                                   data-bs-custom-class="qd-tooltip"
+                                                   data-bs-title="Type a name for the product."></i>
+                                            </label>
+                                            <input id="add-form-1" class="form-control slug-target" type="text"
+                                                   name="name">
+                                            <div class="invalid-feedback">Please fill out all fields.</div>
+                                        </div>
+                                        <div class="col-12 mb5">
+                                            <label for="add-form-1" class="form-label">
+                                                <span>O'quvchi yoshi</span>
+                                                <span class="text-danger">*</span>
+                                                <i data-feather="info" stroke-width="2" width="12" class="text-body"
+                                                   data-bs-toggle="tooltip" data-bs-placement="right"
+                                                   data-bs-custom-class="qd-tooltip"
+                                                   data-bs-title="Type a name for the product."></i>
+                                            </label>
+                                            <input id="add-form-1" class="form-control slug-target" type="text"
+                                                   name="age">
+                                            <div class="invalid-feedback">Please fill out all fields.</div>
+                                        </div>
+                                        <div class="col-12 mb5">
+                                            <label for="add-form-2" class="form-label">
+                                                <span>O'quvchi o'qish joyi</span>
+                                                <i data-feather="info" stroke-width="2" width="12" class="text-body"
+                                                   data-bs-toggle="tooltip" data-bs-placement="right"
+                                                   data-bs-custom-class="qd-tooltip"
+                                                   data-bs-title="The URL slug is automatically populated when you type the title."></i>
+                                            </label>
+                                            <input id="add-form-2" name="study" class="form-control slug-url" type="text">
+                                        </div>
+                                        <div class="col-12 mb5">
+                                            <label for="add-form-2" class="form-label">
+                                                <span>O'quvchining telefon raqami</span>
+                                                <i data-feather="info" stroke-width="2" width="12" class="text-body"
+                                                   data-bs-toggle="tooltip" data-bs-placement="right"
+                                                   data-bs-custom-class="qd-tooltip"
+                                                   data-bs-title="The URL slug is automatically populated when you type the title."></i>
+                                            </label>
+                                            <input id="add-form-2" class="form-control slug-url" name="phone_number" type="text">
+                                        </div>
+                                        <div class="col-6 mb5">
+                                            <label for="add-form-3" class="form-label">
+                                                <span>Student level</span>
+                                                <span class="text-danger">*</span>
+                                                <i data-feather="info" stroke-width="2" width="12" class="text-body"
+                                                   data-bs-toggle="tooltip" data-bs-placement="right"
+                                                   data-bs-custom-class="qd-tooltip"
+                                                   data-bs-title="Type a SKU code for the product."></i>
+                                            </label>
+                                            <input id="add-form-3" class="form-control" name="level" type="text" required>
+                                            <div class="invalid-feedback">Please fill out all fields.</div>
+                                        </div>
+
+
+                                        <div class="col-12 mb5">
+                                            <label for="add-form-6" class="form-label">
+                                                <span>Viloyatni tanlang</span>
+                                                <span class="text-danger">*</span>
+                                                <i data-feather="info" stroke-width="2" width="12" class="text-body"
+                                                   data-bs-toggle="tooltip" data-bs-placement="right"
+                                                   data-bs-custom-class="qd-tooltip"
+                                                   data-bs-title="Select if the category will be a subcategory of another category."></i>
+                                            </label>
+                                            <select id="add-form-6" class="form-select js-choice" required name="region">
+                                                {% for region in regions %}
+                                                <option value="{{ region.id }}" style="color: black">{{ region.name }}</option>
+                                                {% endfor %}
+{#
+                                            </select>
+                                            <div class="invalid-feedback">Please select a category.</div>
+                                        </div>
+
+                                        <div class="col-12 mb5">
+                                            <label for="add-form-2" class="form-label">
+                                                <span>Manzil : </span>
+                                                <i data-feather="info" stroke-width="2" width="12" class="text-body"
+                                                   data-bs-toggle="tooltip" data-bs-placement="right"
+                                                   data-bs-custom-class="qd-tooltip"
+                                                   data-bs-title="The URL slug is automatically populated when you type the title."></i>
+                                            </label>
+                                            <input id="add-form-2" name="address_line" class="form-control slug-url" type="text">
+                                        </div>
+                                        <div class="col-12 mb5">
+                                            <label for="add-form-2" class="form-label">
+                                                <span>Otasining ismi   </span>
+                                                <i data-feather="info" stroke-width="2" width="12" class="text-body"
+                                                   data-bs-toggle="tooltip" data-bs-placement="right"
+                                                   data-bs-custom-class="qd-tooltip"
+                                                   data-bs-title="The URL slug is automatically populated when you type the title."></i>
+                                            </label>
+                                            <input id="add-form-2 " name="fathers_name" class="form-control slug-url" type="text">
+                                        </div>
+                                        <div class="col-12 mb5">
+                                            <label for="add-form-2" class="form-label">
+                                                <span>Otasining yoshi   </span>
+                                                <i data-feather="info" stroke-width="2" width="12" class="text-body"
+                                                   data-bs-toggle="tooltip" data-bs-placement="right"
+                                                   data-bs-custom-class="qd-tooltip"
+                                                   data-bs-title="The URL slug is automatically populated when you type the title."></i>
+                                            </label>
+                                            <input id="add-form-2" class="form-control slug-url" name="fathers_age" type="text">
+                                        </div>
+                                        <div class="col-12 mb5">
+                                            <label for="add-form-2" class="form-label">
+                                                <span>Otasining ish joyi   </span>
+                                                <i data-feather="info" stroke-width="2" width="12" class="text-body"
+                                                   data-bs-toggle="tooltip" data-bs-placement="right"
+                                                   data-bs-custom-class="qd-tooltip"
+                                                   data-bs-title="The URL slug is automatically populated when you type the title."></i>
+                                            </label>
+                                            <input id="add-form-2" name="fathers_job" class="form-control slug-url" type="text">
+                                        </div>
+                                        <div class="col-12 mb5">
+                                            <label for="add-form-2" class="form-label">
+                                                <span>Otasining telefon raqami   </span>
+                                                <i data-feather="info" stroke-width="2" width="12" class="text-body"
+                                                   data-bs-toggle="tooltip" data-bs-placement="right"
+                                                   data-bs-custom-class="qd-tooltip"
+                                                   data-bs-title="The URL slug is automatically populated when you type the title."></i>
+                                            </label>
+                                            <input id="add-form-2" name="fathers_phone" class="form-control slug-url" type="text">
+                                        </div>
+                                        <div class="col-12 mb5">
+                                            <label for="add-form-2" class="form-label">
+                                                <span>Onasining ismi   </span>
+                                                <i data-feather="info" stroke-width="2" width="12" class="text-body"
+                                                   data-bs-toggle="tooltip" data-bs-placement="right"
+                                                   data-bs-custom-class="qd-tooltip"
+                                                   data-bs-title="The URL slug is automatically populated when you type the title."></i>
+                                            </label>
+                                            <input id="add-form-2" class="form-control slug-url" name="mothers_name" type="text">
+                                        </div>
+                                        <div class="col-12 mb5">
+                                            <label for="add-form-2" class="form-label">
+                                                <span>Onasining yoshi   </span>
+                                                <i data-feather="info" stroke-width="2" width="12" class="text-body"
+                                                   data-bs-toggle="tooltip" data-bs-placement="right"
+                                                   data-bs-custom-class="qd-tooltip"
+                                                   data-bs-title="The URL slug is automatically populated when you type the title."></i>
+                                            </label>
+                                            <input id="add-form-2" name="mothers_age" class="form-control slug-url" type="text">
+                                        </div>
+                                        <div class="col-12 mb5">
+                                            <label for="add-form-2" class="form-label">
+                                                <span>Onasining ish joyi   </span>
+                                                <i data-feather="info" stroke-width="2" width="12" class="text-body"
+                                                   data-bs-toggle="tooltip" data-bs-placement="right"
+                                                   data-bs-custom-class="qd-tooltip"
+                                                   data-bs-title="The URL slug is automatically populated when you type the title."></i>
+                                            </label>
+                                            <input id="add-form-2" name="mothers_job" class="form-control slug-url" type="text">
+                                        </div>
+                                        <div class="col-12 mb5">
+                                            <label for="add-form-2" class="form-label">
+                                                <span>Onasining telefon raqami   </span>
+                                                <i data-feather="info" stroke-width="2" width="12" class="text-body"
+                                                   data-bs-toggle="tooltip" data-bs-placement="right"
+                                                   data-bs-custom-class="qd-tooltip"
+                                                   data-bs-title="The URL slug is automatically populated when you type the title."></i>
+                                            </label>
+                                            <input id="add-form-2" name="mothers_phone" class="form-control slug-url" type="text">
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- General End -->
+
+
+                        </div>
+                    </div>
+                    <!-- Left Column End -->
+
+
+                    <!-- Buttons Start -->
+                    <div class="col-12 text-end">
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                    <!-- Buttons End -->
+                </div>
+
+                <!-- Content End -->
+            </form>
+        </div>
+
+    </div>
+{% endblock content %}

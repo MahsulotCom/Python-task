@@ -1,0 +1,110 @@
+{% extends 'app/main/base.html' %}
+{% load static %}
+{% block content %}
+    <div class="app-content p6 pb2 smp1">
+        <div class="container-fluid p0">
+            <!-- Page Top Start -->
+            <div class="row mb6 align-items-center">
+                <div class="col-md-12">
+                    <h1 class="page-title mb2">View Contact</h1>
+                    <nav class="breadcrumb-nav" aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item"><a href="apps-contacts-contact-list.html">Contact List</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">View Contact</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+            <!-- Page Top End -->
+
+            <!-- Page Bottom Start -->
+            <div class="row">
+
+                <!-- Right Column Start -->
+                <div class="col-xxl-9 mb6">
+                    <div class="card shadow-card">
+                        <div class="border-bottom">
+                            <div class="p6 d-flex align-items-center justify-content-between">
+                                <h6 class="mb0">{{ student.name }}</h6>
+                                <div class="d-flex align-items-center justify-content-start">
+                                    <a href="{% url 'edit' student.id %}" class="btn btn-success btn-soft me2">Tahrirlash</a>
+                                    <a href="{% url 'delete' student.id %}" class="btn btn-success btn-soft me2">O'chirish</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p6 pb0">
+                            <div class="border-bottom-dashed pb6 mb6">
+                                <div class="row align-items-center">
+                                    <div class="col-lg-4">
+                                        <a href="#" class="text-decoration-none">
+                                            <i data-feather="phone" stroke-width="2" width="18"
+                                               class="text-primary me1"></i>
+                                            <span class="text-body">+998 {{ student.phone_number }}</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 mb6">
+                                    <div class="d-flex flex-column">
+                                        <strong class="text-heading mb1">Manzil:</strong>
+                                        <span>{{ student.region }} - {{ student.address_line }}</span>
+                                    </div>
+                                </div>
+                                {% if student.study != None %}
+                                    <div class="col-12 mb6">
+                                        <div class="d-flex flex-column">
+                                            <strong class="text-heading mb1">O'qiydi:</strong>
+                                            <span>{{ student.study }} - {{ student.level }}</span>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                                {% if student.fathers_name != None %}
+                                	<div class="col-12 mb6">
+                                    <div class="d-flex flex-column">
+                                        <strong class="text-heading mb1">Otasi: {{ student.fathers_name }}
+                                        {% if student.fathers_age != None %}
+                                        	 - {{ student.fathers_age }} yosh
+                                        {% endif %}
+                                        </strong>
+                                        <span>
+                                            {% if student.fathers_job != None %}
+                                            	{{ student.fathers_job }}
+                                            {% endif %}
+                                            {% if student.fathers_phone != None %}
+                                            	 - Tel: (+998) {{ student.fathers_phone }}
+                                            {% endif %}
+                                        </span>
+                                    </div>
+                                </div>
+                                {% endif %}
+                                {% if student.mothers_name != None %}
+                                	<div class="col-12 mb6">
+                                    <div class="d-flex flex-column">
+                                        <strong class="text-heading mb1">Onasi: {{ student.mothers_name }}
+                                        {% if student.mothers_age != None %}
+                                        	 - {{ student.mothers_age }} yosh
+                                        {% endif %}
+                                        </strong>
+                                        <span>
+                                            {% if student.mothers_job != None %}
+                                            	{{ student.mothers_job }}
+                                            {% endif %}
+                                            {% if student.mothers_phone != None %}
+                                            	 - Tel: (+998) {{ student.mothers_phone }}
+                                            {% endif %}
+                                        </span>
+                                    </div>
+                                </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Right Column End -->
+            </div>
+            <!-- Page Bottom End -->
+        </div>
+    </div>
+{% endblock %}

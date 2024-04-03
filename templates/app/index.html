@@ -1,0 +1,198 @@
+{% extends 'app/main/base.html' %}
+{% load static %}
+{% block content %}
+    <div class="app-content p6 pb2 smp1">
+        <div class="container-fluid p0">
+            <!-- Page Top Start -->
+            <div class="row mb6 align-items-center">
+                <div class="col-md-6 mobile-bottom-fix">
+                    <h1 class="page-title mb2">Kurslar</h1>
+                    <nav class="breadcrumb-nav" aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Kurslar</li>
+                        </ol>
+                    </nav>
+                </div>
+                <div class="col-md-6 text-start text-md-end">
+                    <!-- Filter Dropdown Start-->
+                    <div class="dropdown d-inline me4">
+                        <button class="btn bg-white d-inline-flex align-items-center dropdown-toggle"
+                                data-bs-auto-close="outside" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i data-feather="filter" stroke-width="1.5" height="16" class="me2 text-body"></i>
+                            <span class="text-body">Filter</span>
+                        </button>
+                        <div class="dropdown-menu width-330 p0">
+                            <div class="border-bottom-dashed">
+                                <h6 class="mb0 p4 px-4">Filter Options</h6>
+                            </div>
+                            <form action="" method="get">
+                                <div class="p5 px-4">
+                                    <div class="row mb5">
+                                        <div class="col-12 mb4">
+                                            <label for="form-element-1" class="form-label">Kurs:</label>
+                                            <select id="form-element-1" class="form-select js-choice" name="query">
+                                                <option value="">Tanlang</option>
+                                                {% for course in courses %}
+                                                    <option value="{{ course.title }}">{{ course.title }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <button class="btn btn-sm d-block w-100 btn-primary" type="submit">Apply
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- Filter Dropdown End-->
+
+                    <!-- Add Button Start-->
+                    <a href="{% url 'add' %}" class="btn btn-primary">Kurs qo'shish</a>
+                    <!-- Add Button End-->
+                </div>
+            </div>
+            <!-- Page Top End -->
+
+
+            <!-- Content Start -->
+            <div class="row mb5">
+                <div class="col-12">
+                    <div class="p6">
+                        <div class="row align-items-center">
+                            <div class="col-md-3">
+                                <form action="" method="get">
+                                    <input class="form-control" type="text" name="query" placeholder="Search...">
+                                    <button class="btn-check" type="submit"></button>
+                                </form>
+                            </div>
+                            <div class="col-md-9 text-end">
+                                <div id="edit-buttons" class="visibility-hide">
+                                    <span id="selected-items">1</span>
+                                    <span class="me2">Selected</span>
+                                    <button type="button" class="btn btn-outline-danger me2">Delete</button>
+                                    <button type="button" class="btn btn-outline-secondary me2">Archive</button>
+                                    <button type="button" class="btn btn-outline-secondary me2">Publish</button>
+                                    <button type="button" class="btn btn-outline-secondary">Unpublish</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card shadow-card p6 pt3">
+                        <div class="table-responsive text-nowrap">
+                            <table class="table qd-table mb6 align-middle">
+                                <thead>
+                                <tr>
+                                    <th scope="col">Ism</th>
+                                    <th scope="col">Yosh</th>
+                                    <th scope="col">Tel:</th>
+                                    <th scope="col">Manzil</th>
+                                    <th scope="col">Kurs</th>
+                                    <th scope="col" class="text-end">ACTIONS</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for student in students %}
+                                    <tr>
+                                        <td>
+                                            <a href="{% url 'student' student.id %}" class="text-decoration-none">
+                                                <i data-feather="external-link" stroke-width="2" height="20"
+                                                   class="text-heading"></i>
+                                                <strong class="text-heading">{{ student.name }}</strong>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <div class="d-inline-flex flex-row align-items-center">
+                                                <strong class="text-heading">{{ student.age }}</strong>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-inline-flex flex-row align-items-center">
+                                                <strong class="text-heading">(+998) {{ student.phone_number }}</strong>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-inline-flex flex-row align-items-center">
+                                                <strong class="text-heading">{{ student.address_line }}</strong>
+                                            </div>
+                                        </td>
+                                        <td>
+
+                                            <div class="d-inline-flex flex-row align-items-center">
+                                                <strong class="text-heading">{{ student.course }}</strong>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="dropdown text-end">
+                                                <button type="button"
+                                                        class="outline-none dropdown-toggle arrow-none border-0 height-40 rounded ps3 bg-body-secondary opacity-75"
+                                                        data-bs-auto-close="outside" data-bs-toggle="dropdown"
+                                                        aria-expanded="false">
+                                                    <span class="text-heading">Actions</span>
+                                                    <i data-feather="chevron-down" stroke-width="2" height="16"
+                                                       class="text-heading"></i>
+                                                </button>
+                                                <ul class="dropdown-menu text-start">
+                                                    <li><a class="dropdown-item"
+                                                           href="{% url 'edit' student.id %}">Edit</a></li>
+                                                    <li><a class="dropdown-item" href="{% url 'student' student.id %}">Ko'proq..</a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="dropdown-item d-flex align-items-center justify-content-between"
+                                                           href="{% url 'delete' student.id %}">
+                                                            O'chirish <i data-feather="info" stroke-width="2"
+                                                                         height="12" class="text-body me1"
+                                                                         data-bs-toggle="tooltip"
+                                                                         data-bs-placement="left"
+                                                                         data-bs-custom-class="qd-tooltip"
+                                                                         data-bs-title="Agar bu ma'lumotni o'chirsanggiz uni qayta tiklay olmaysiz"></i>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination justify-content-center align-items-center">
+                                {% if students.has_previous %}
+                                    <li class="page-item">
+                                        <a class="page-link" href="?page={{ students.previous_page_number }}">
+                                            <i class="arrow" data-feather="chevron-left" width="14"></i>
+                                        </a>
+                                    </li>
+                                {% endif %}
+                                {% for i in students.paginator.page_range %}
+                                    {% if students.number == i %}
+                                        <li class="page-item active"><a class="page-link" href="#">{{ i }}</a></li>
+                                    {% else %}
+                                        <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+                                    {% endif %}
+                                {% endfor %}
+                                {% if students.has_next %}
+                                    <li class="page-item">
+                                        <a class="page-link" href="?page={{ students.next_page_number }}">
+                                            <i class="arrow" data-feather="chevron-right" width="14"></i>
+                                        </a>
+                                    </li>
+                                {% endif %}
+
+                            </ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <!-- Content End -->
+        </div>
+    </div>
+{% endblock %}
