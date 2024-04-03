@@ -26,6 +26,11 @@ Python task is a Django-based e-commerce platform that allows users to create sh
 * Add one or more parent categories. ✅
 * Display all possible paths to chosen category. ✅
 
+### Management
+
+* Moderation for products. ✅
+* Moderation of all available pages. ✅
+
 ## Installation
 
 Clone the repository:
@@ -65,8 +70,7 @@ $ Access the admin panel at http://127.0.0.1:8000/admin/ and log in with the sup
 $ Create shops, add products, manage orders, and view analytics.
 ```
 <img height="300" src="C:\Users\Admin\Desktop\Elastic\Python-task\media\product_images\1.png" width="500"/>
-
-
+https://ibb.co/9HkfbJb
 
 ## Management
 
