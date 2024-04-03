@@ -45,7 +45,7 @@ Customer: phone_number='+998901111111' password='ABcd123456'
 ```
 http://127.0.0.1:8000/admin/doc/
 ```
-### Expected Result
+### Expected Result (For Super Admin)
 
 ![Screenshot from 2024-04-03 10-05-00](https://github.com/salohiddinhalimjonov/python_task/assets/72136403/69d3a4d7-1cf9-48b7-aa46-b7efbae7918b)
 
