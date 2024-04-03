@@ -9,8 +9,10 @@ web_images/images/
 staticfiles
 # Backup files #
 *.bak
-media/
-/media
+media/*
+!media/fake_images/
+/media/*
+!/media/fake_images/
 # If you are using PyCharm #
 # User-specific stuff
 .idea//workspace.xml
