@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django.contrib.admindocs",
+    "django_docutils",
     "apps.category",
     "apps.product",
     "apps.user",
