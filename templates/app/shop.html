@@ -1,0 +1,150 @@
+{% extends 'app/main/base.html' %}
+{% load static %}
+{% block content %}
+    <div class="app-content p6 pb2 smp1">
+        <div class="container-fluid p0">
+            <!-- Page Top Start -->
+            <div class="row mb6 align-items-center">
+                <div class="col-md-6 mobile-bottom-fix">
+                    <h1 class="page-title mb2">Shops</h1>
+                    <nav class="breadcrumb-nav" aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Shops</li>
+                        </ol>
+                    </nav>
+                </div>
+                <div class="col-md-6 text-start text-md-end">
+                    <!-- Filter Dropdown Start-->
+{#                    <div class="dropdown d-inline me4">#}
+{#                        <button class="btn bg-white d-inline-flex align-items-center dropdown-toggle"#}
+{#                                data-bs-auto-close="outside" data-bs-toggle="dropdown" aria-expanded="false">#}
+{#                            <i data-feather="filter" stroke-width="1.5" height="16" class="me2 text-body"></i>#}
+{#                            <span class="text-body">Filter</span>#}
+{#                        </button>#}
+{#                        <div class="dropdown-menu width-330 p0">#}
+{#                            <div class="border-bottom-dashed">#}
+{#                                <h6 class="mb0 p4 px-4">Filter Options</h6>#}
+{#                            </div>#}
+{#                            <form action="" method="get">#}
+{#                                <div class="p5 px-4">#}
+{#                                    <div class="row mb5">#}
+{#                                        <div class="col-12 mb4">#}
+{#                                            <label for="form-element-1" class="form-label">Shops:</label>#}
+{#                                            <select id="form-element-1" class="form-select js-choice" name="query">#}
+{#                                                <option value="">Tanlang</option>#}
+{#                                                {% for course in courses %}#}
+{#                                                    <option value="{{ course.title }}">{{ course.title }}</option>#}
+{#                                                {% endfor %}#}
+{#                                            </select>#}
+{#                                        </div>#}
+{#                                    </div>#}
+{#                                    <div class="row">#}
+{#                                        <div class="col-6">#}
+{#                                            <button class="btn btn-sm d-block w-100 btn-primary" type="submit">Apply#}
+{#                                            </button>#}
+{#                                        </div>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </form>#}
+{#                        </div>#}
+{#                    </div>#}
+                    <!-- Filter Dropdown End-->
+
+                </div>
+            </div>
+            <!-- Page Top End -->
+
+
+            <div class="row mb5">
+                <div class="col-12">
+                    <div class="card shadow-card p6 pt3">
+                    	 <form action="" method="get">
+                    	<div class="p3">
+
+								<div class="w-100 position-relative d-flex align-items-center">
+									<button type="submit" data-feather="search" stroke-width="2" height="22" class="text-body-tertiary position-absolute"></button>
+									<input type="text" name="query" class="form-control border-0 outline-none input-reset ps6 bg-transparent" placeholder="Search...">
+
+								</div>
+							</div>
+                        </form>
+                        <div class="table-responsive text-nowrap">
+                            <table class="table qd-table mb6 align-middle">
+                                <thead>
+                                <tr>
+                                    <th scope="col">PRODUCT</th>
+                                    <th scope="col">DESCRIPTION</th>
+                                    <th scope="col"></th>
+                                    <th scope="col"></th>
+                                    <th scope="col"></th>
+                                    <th scope="col" class="text-end">ACTIONS</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for shop in shops %}
+                                    <tr>
+                                        <td>
+                                            <div class="d-inline-flex flex-row align-items-center">
+                                                <div class="width-120 height-80 img-fix rounded me4"
+                                                     style="max-width: 120px; max-height: 80px; overflow: hidden;">
+                                                    <img src="{{ shop.image.url }}" alt=""
+                                                         style="width: 100%; height: auto; object-fit: cover;">
+                                                </div>
+                                                <strong class="text-heading">{{ shop.title }}</strong>
+                                            </div>
+                                        </td>
+
+                                        <td>
+                                            <a href="#" class="text-decoration-none">
+
+                                                <strong class="text-heading">{{ shop.description }}</strong>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <strong class="text-heading"></strong>
+                                        </td>
+                                        <td>
+                                            <strong class="text-heading"></strong>
+                                        </td>
+                                        <td>
+                                            <span class="badge rounded-pill badge-soft text-bg-success"></span>
+                                        </td>
+                                        <td>
+                                            <div class="dropdown text-end">
+                                                <button type="button"
+                                                        class="outline-none dropdown-toggle arrow-none border-0 height-40 rounded ps3 bg-body-secondary opacity-75"
+                                                        data-bs-auto-close="outside" data-bs-toggle="dropdown"
+                                                        aria-expanded="false">
+                                                    <span class="text-heading">Actions</span>
+                                                    <i data-feather="chevron-down" stroke-width="2" height="16"
+                                                       class="text-heading"></i>
+                                                </button>
+                                                <ul class="dropdown-menu text-start">
+                                                    <li><a class="dropdown-item" href="{% url "edit_shop" shop.id %}">Edit</a></li>
+{#                                                    <li>#}
+{#                                                        <a class="dropdown-item d-flex align-items-center justify-content-between"#}
+{#                                                           href="#">#}
+{#                                                            Delete <i data-feather="info" stroke-width="2" height="12"#}
+{#                                                                      class="text-body me1" data-bs-toggle="tooltip"#}
+{#                                                                      data-bs-placement="left"#}
+{#                                                                      data-bs-custom-class="qd-tooltip"#}
+{#                                                                      data-bs-title="If you delete it, this action cannot be undone."></i>#}
+{#                                                        </a>#}
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Content End -->
+            <!-- Content End -->
+        </div>
+    </div>
+{% endblock %}

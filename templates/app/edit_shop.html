@@ -1,0 +1,127 @@
+{% extends 'app/main/base.html' %}
+{% load static %}
+{% block content %}
+    <div class="app-content p6 pb2 smp1">
+        <div class="container-fluid p0">
+            <!-- Page Top Start -->
+            <div class="row mb6 align-items-center">
+                <div class="col-md-12 mobile-bottom-fix">
+                    <h1 class="page-title mb2">Edit shop</h1>
+                    <nav class="breadcrumb-nav" aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item"><a href="projects-ecommerce-products.html">Shops</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Edit shop</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+            <!-- Page Top End -->
+
+            <!-- Content Start -->
+            <form method="post" action="{% url 'edit_shop' form.instance.id %}" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="row mb5">
+                    <!-- Left Column Start -->
+                    <div class="col-xxl-8">
+                        <div class="row">
+                            <!-- General Start -->
+                            <div class="col-12 mb6">
+                                <div class="card shadow-card p6">
+                                    <div class="row">
+
+                                        <label for="add-form-1" class="form-label">
+                                            <span>Shop Image</span>
+                                            <span class="text-danger">*</span>
+                                            <i data-feather="info" stroke-width="2" width="12" class="text-body"
+                                               data-bs-toggle="tooltip" data-bs-placement="right"
+                                               data-bs-custom-class="qd-tooltip"
+                                               data-bs-title="Shop image"></i>
+                                        </label>
+                                        <!-- Media Start -->
+                                        <div class="col-xxl-4 mb6">
+                                            <div class="card shadow-card p6">
+                                                <label for="add-category-form-1" class="form-label">
+                                                    <span>Media</span>
+                                                    <i data-feather="info" stroke-width="2" width="12" class="text-body"
+                                                       data-bs-toggle="tooltip" data-bs-placement="right"
+                                                       data-bs-custom-class="qd-tooltip"
+                                                       data-bs-title="Supports: *.png or *.jpg"></i>
+                                                </label>
+                                                <div id="drop-area"
+                                                     class="d-flex flex-column align-items-center bg-light height-440 mb1">
+                                                    <div class="width-120 height-120 border-dashed rounded bg-body-secondary position-relative overflow-hidden d-flex align-items-center justify-content-center mt7 mb4">
+                                                        <i data-feather="image" stroke-width="1.5"
+                                                           class="text-body"></i>
+                                                        <div class="img-fix width-120 height-120 position-absolute top-0 start-0">
+                                                            <img id="preview-img" src="{{ form.instance.image.url }}">
+                                                        </div>
+                                                    </div>
+                                                    <div class="d-flex flex-grow-1 align-items-center justify-content-center">
+                                                        <div class="d-flex flex-column justify-content-start align-items-center">
+
+                                                            <label for="fileElem" id="fileSelect"
+                                                                   class="d-block mb3 text-primary">Browse Photo</label>
+                                                            <small>Supports: *.png, *.jpg and *.jpeg</small>
+                                                        </div>
+                                                    </div>
+                                                    <input type="file" id="fileElem" accept="image/*" class="d-none"
+                                                           name="image">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Media End -->
+                                    </div>
+                                    <div class="col-12 mb5">
+                                        <label for="add-form-1" class="form-label">
+                                            <span>Shop Title</span>
+                                            <span class="text-danger">*</span>
+                                            <i data-feather="info" stroke-width="2" width="12" class="text-body"
+                                               data-bs-toggle="tooltip" data-bs-placement="right"
+                                               data-bs-custom-class="qd-tooltip"
+                                               data-bs-title="Type a name for the shop."></i>
+                                        </label>
+                                        <input id="add-form-1" class="form-control slug-target" type="text"
+                                               name="title" value="{{ form.instance.title }}">
+                                        <div class="invalid-feedback">Please fill out all fields.</div>
+                                    </div>
+                                    <div class="col-12 mb5">
+                                        <label for="add-form-2" class="form-label">
+                                            <span>Shop Description</span>
+                                            <span class="text-danger">*</span>
+
+                                            <i data-feather="info" stroke-width="2" width="12" class="text-body"
+                                               data-bs-toggle="tooltip" data-bs-placement="right"
+                                               data-bs-custom-class="qd-tooltip"
+                                               data-bs-title="The URL slug is automatically populated when you type the title."></i>
+                                        </label>
+                                        <input id="add-form-2" name="description" class="form-control slug-url"
+                                               type="text" value="{{ form.instance.description }}">
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- General End -->
+
+
+                    </div>
+                </div>
+                <!-- Left Column End -->
+
+
+                <!-- Buttons Start -->
+                <div class="col-12 text-end">
+                    <button type="submit" class="btn btn-primary">Edit Shop</button>
+                </div>
+                <!-- Buttons End -->
+            </form>
+        </div>
+
+        <!-- Content End -->
+        </form>
+    </div>
+
+    </div>
+{% endblock content %}

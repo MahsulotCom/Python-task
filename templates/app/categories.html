@@ -1,0 +1,86 @@
+{% extends 'app/main/base.html' %}
+{% load static %}
+{% block content %}
+    <div class="app-content p6 pb2 smp1">
+        <div class="container-fluid p0">
+            <!-- Page Top Start -->
+            <div class="row mb6 align-items-center">
+                <div class="col-md-6 mobile-bottom-fix">
+                    <h1 class="page-title mb2">Categories</h1>
+                    <nav class="breadcrumb-nav" aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Categories</li>
+                        </ol>
+                    </nav>
+                </div>
+                <div class="col-md-6 text-start text-md-end">
+
+
+                </div>
+            </div>
+            <!-- Page Top End -->
+
+
+            <div class="row mb5">
+                <div class="col-12">
+                    <div class="card shadow-card p6 pt3">
+                        <form action="" method="get">
+                    	<div class="p3">
+                            
+								<div class="w-100 position-relative d-flex align-items-center">
+									<button type="submit" data-feather="search" stroke-width="2" height="22" class="text-body-tertiary position-absolute"></button>
+									<input type="text" name="query" class="form-control border-0 outline-none input-reset ps6 bg-transparent" placeholder="Search...">
+
+								</div>
+							</div>
+                        </form>
+                    
+                        <div class="table-responsive text-nowrap">
+                            <table class="table qd-table mb6 align-middle">
+                                <thead>
+                                <tr>
+                                    <th scope="col">TITLE</th>
+                                    <th scope="col">DESCRIPTION</th>
+                                    <th scope="col">CREATED AT</th>
+                                    <th scope="col"></th>
+                                    <th scope="col"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for category in categories %}
+                                    <tr>
+                                        <td>
+
+                                                <strong class="text-heading">{{ category.title }}</strong>
+
+                                        </td>
+
+                                        <td>
+                                            <a href="#" class="text-decoration-none">
+
+                                                <strong class="text-heading">{{ category.description }}</strong>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <strong class="text-heading">{{ category.created_at }}</strong>
+                                        </td>
+                                        <td>
+                                            <strong class="text-heading"></strong>
+                                        </td>
+                                        <td>
+                                            <span class="badge rounded-pill badge-soft text-bg-success"></span>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Content End -->
+            <!-- Content End -->
+        </div>
+    </div>
+{% endblock %}

@@ -1,111 +1,115 @@
-from django.contrib.auth import login
-from django.contrib.auth.decorators import login_required
-from django.core.paginator import Paginator
 from django.db.models import Q
 from django.shortcuts import render, redirect
 
-from app.forms import CourseModelForm, StudentModelForm, RegisterForm, LoginForm
-from app.models import Student, Course, Region
+from app.forms import EditShopForm, EditProductForm
+from app.models import Shop, Product, Category
 
+# Shop view
 
-
-
-def index_view(request):
-    courses = Course.objects.all()
-    students = Student.objects.all()
-    paginator = Paginator(object_list=students,
-                          per_page=8)
-
-    students_right = Student.objects.all()[:7]
-    page_number = request.GET.get('page')
-    students_list = paginator.get_page(number=page_number)
-    query = request.GET.get('query', '')
-
+def shop_view(request):
+    shops = Shop.objects.all()
+    query = request.GET.get('query')
     if query:
-        students_list = Student.objects.filter(
-            Q(course__title__icontains=query) |
-            Q(fathers_job__icontains=query) |
-            Q(mothers_job__icontains=query) |
-            Q(address_line__icontains=query) |
-            Q(region__name__icontains=query) |
-            Q(study__icontains=query) |
-            Q(name__icontains=query) |
-            Q(phone_number__icontains=query) |
-            Q(mothers_phone__icontains=query) |
-            Q(mothers_name__icontains=query) |
-            Q(fathers_name__icontains=query) |
-            Q(course__title__icontains=query) |
-            Q(age=query) |
-            Q(level=query) |
-            Q(fathers_phone__icontains=query) |  # Otaning telefon raqami (fathers_phone) ni qidirish
-            Q(fathers_age__icontains=query) |
-            Q(mothers_age__icontains=query)
+        shops = shops.filter(Q(title__icontains=query))
+    return render(request=request,
+                  template_name='app/shop.html',
+                  context={'shops': shops})
+
+
+# ------------------------------------------------------------------------------------------
+
+# Products view
+def products_view(request):
+    products = Product.objects.all()
+    query = request.GET.get('query')
+
+    # Filter by title (existing logic)
+    if query:
+        products = products.filter(Q(title__icontains=query))
+
+    # Filter by price range (new logic)
+    price_range = request.GET.get('price_range')
+    if price_range:
+        try:
+            min_price, max_price = map(int, price_range.split('-'))
+            if max_price == -1:
+                products = products.filter(price__gte=min_price)
+            else:
+                products = products.filter(price__range=(min_price, max_price))
+        except ValueError:
+            pass  # Handle potential invalid price range format
+
+    return render(request=request,
+                  template_name='app/products.html',
+                  context={'products': products})
+
+
+# ------------------------------------------------------------------------------------------
+
+# Edit shop view
+
+def edit_shop(request, shop_id):
+    shop = Shop.objects.filter(id=shop_id).first()
+
+    if request.method == 'POST':
+        form = EditShopForm(
+            data=request.POST,
+            files=request.FILES,
+            instance=shop
         )
-    return render(request=request,
-                  template_name='app/index.html',
-                  context={"students": students_list,
-                           "students_right": students_right,
-                           "courses": courses})
-
-
-def add_view(request):
-    if request.method == "POST":
-        form = CourseModelForm(data=request.POST)
         if form.is_valid():
-            form.save()
-            return redirect('index')
-    form = CourseModelForm()
-    return render(request=request,
-                  template_name='app/add.html',
+            shop = form.save(commit=False)
+            shop.save(update_fields=["image", "title", "description"])
+            return redirect("index")
+
+    form = EditShopForm(instance=shop)
+    return render(request=request, template_name='app/edit_shop.html',
                   context={"form": form})
 
 
-def edit_student_view(request, student_id):
-    student = Student.objects.select_related('course', 'region').filter(id=student_id).first()
+# ------------------------------------------------------------------------------------------
 
-    if request.method == "POST":
-        form = StudentModelForm(request.POST, instance=student)
+# Edit product view
+def edit_product(request, product_id):
+    product = Product.objects.filter(id=product_id).first()
+    shops = Shop.objects.all()
+    categories = Category.objects.all()
+
+    if request.method == 'POST':
+        form = EditProductForm(
+            data=request.POST,
+            files=request.FILES,
+            instance=product
+        )
         if form.is_valid():
-            student = form.save(commit=False)
-            if request.user.is_authenticated:
-                student.user = request.user
-            student.save(update_fields=['name', 'age', 'study', 'level', 'phone_number', 'address_line', 'region',
-                                        'fathers_name', 'fathers_age', 'fathers_job', 'fathers_phone', 'mothers_name',
-                                        'mothers_age', 'mothers_job', 'mothers_phone'])
-            return redirect('student', student.id)
+            product = form.save(commit=False)
+            # Handle category separately
+            product.save()
+            form.save_m2m()  # Save many-to-many relationships
+            return redirect("products")
+    else:
+        form = EditProductForm(instance=product, initial={'category': product.category.all()})
 
-    form = StudentModelForm(instance=student)
-
-    return render(request=request, template_name='app/edit.html',
-                  context={"form": form, "courses": Course.objects.all(), "regions": Region.objects.all()})
-
-
-def add_student_view(request):
-    courses = Course.objects.all()
-    regions = Region.objects.all()
-    if request.method == "POST":
-        form = StudentModelForm(data=request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect("index")
-    form = StudentModelForm()
-    return render(request=request,
-                  template_name='app/add_student.html',
+    return render(request=request, template_name='app/edit_product.html',
                   context={"form": form,
-                           "courses": courses,
-                           "regions": regions})
+                           "shops": shops,
+                           "categories": categories})
 
 
-def detail_view(request, student_id):
-    student = Student.objects.filter(id=student_id).first()
+# ------------------------------------------------------------------------------------------
+
+
+# Categories view
+
+def categories_view(request):
+    categories = Category.objects.all()
+    query = request.GET.get('query')
+    if query:
+        categories = categories.filter(Q(title__icontains=query) |
+                                       Q(parent__title__icontains=query))
 
     return render(request=request,
-                  template_name='app/detail.html',
-                  context={"student": student})
+                  template_name='app/categories.html',
+                  context={'categories': categories})
 
-
-def delete_view(request, student_id):
-    student = Student.objects.filter(id=student_id).first()
-    action = student.delete()
-    if action:
-        return redirect('index')
+# ------------------------------------------------------------------------------------------

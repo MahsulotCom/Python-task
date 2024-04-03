@@ -1,34 +1,66 @@
 {% load static %}
-<div class="app-sidebar">
+{#<div class="app-sidebar">#}
+{#			<!-- ***** Sidebar Menu Start ***** -->#}
+{#			<div class="sidebar-menu custom-scroll pt-4">#}
+{#				<!-- ***** Projects Menu Start ***** -->#}
+{#				<div class="menu-title mb-2">#}
+{#					<small>PROJECTS</small>#}
+{#				</div>#}
+{#				<ul class="menu-group m-0 px-4 mb-4">#}
+{#					<li class="sub-menu active">#}
+{#						<a href="javascript:;" class="d-flex align-items-center justify-content-between">#}
+{#							<div class="d-flex align-items-center">#}
+{#								<i data-feather="shopping-cart" stroke-width="1.5" height="18" class="me2"></i>#}
+{#								<span>Admin Panel</span>#}
+{#							</div>#}
+{#							<i class="arrow" data-feather="chevron-right" height="14"></i>#}
+{#						</a>#}
+{#						<ul class="sub-menu-group">#}
+{#							<li class="active"><a href="{% url 'index' %}"><span>Shops</span></a></li>#}
+{#							<li><a href="#"><span>Categories </span></a></li>#}
+{#							<li><a href="{% url "products" %}"><span>Products</span></a></li>#}
+{#						</ul>#}
+{#					</li>#}
+{#				</ul>#}
+{#				<!-- ***** Projects Menu End ***** -->#}
+{#			</div>#}
+{#		</div>#}
+
+
+<!-- ***** Sidebar Start ***** -->
+		<div class="app-sidebar">
 			<!-- ***** Sidebar Menu Start ***** -->
 			<div class="sidebar-menu custom-scroll pt-4">
-				<!-- ***** Projects Menu Start ***** -->
-				<div class="menu-title mb-2">
-					<small>PROJECTS</small>
-				</div>
+				<!-- ***** Dashboards Menu Start ***** -->
 				<ul class="menu-group m-0 px-4 mb-4">
-					<li class="sub-menu active">
+					<li class="sub-menu">
 						<a href="javascript:;" class="d-flex align-items-center justify-content-between">
 							<div class="d-flex align-items-center">
-								<i data-feather="shopping-cart" stroke-width="1.5" height="18" class="me2"></i>
-								<span>Admin Panel</span>
+								<i data-feather="home" stroke-width="1.5" height="20" class="me2"></i>
+								<span>Dashboards</span>
 							</div>
 							<i class="arrow" data-feather="chevron-right" height="14"></i>
 						</a>
 						<ul class="sub-menu-group">
-							<li class="active"><a href="{% url 'index' %}"><span>Studentlar</span></a></li>
-							<li><a href="{% url 'add' %}"><span>Kurs </span></a></li>
-							<li><a href="{% url 'add-student' %}"><span>Student </span></a></li>
+							<li><a href="{% url "index" %}"><span>Shops</span></a></li>
+							<li><a href="{% url "categories" %}"><span>Categories</span></a></li>
+							<li><a href="{% url "products" %}"><span>Products</span></a></li>
+
 						</ul>
 					</li>
 				</ul>
-				<!-- ***** Projects Menu End ***** -->
+				<!-- ***** Dashboards Menu End ***** -->
+
+
+
+
 			</div>
 			<!-- ***** Sidebar Menu End ***** -->
 
 			<!-- ***** Sidebar Footer Start ***** -->
-{#			<div class="sidebar-footer d-flex align-items-center justify-content-center">#}
-{#				<a href="http://qoduby.tempload.com/documentation/index.html" class="sidebar-footer-button">Docs & Components</a>#}
-{#			</div>#}
+			<div class="sidebar-footer d-flex align-items-center justify-content-center">
+				<a href="#" class="sidebar-footer-button">Admin Panel</a>
+			</div>
 			<!-- ***** Sidebar Footer End ***** -->
 		</div>
+		<!-- ***** Sidebar End ***** -->
