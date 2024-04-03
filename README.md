@@ -4,7 +4,8 @@
          alt="Main Page">
 <img src=
 * Dashboard
-"https://i.ibb.co/Fwk8cCt/Screenshot-2.png"
+<img src=
+* "https://i.ibb.co/Fwk8cCt/Screenshot-2.png"
          alt="Main Page">
 * Logout page
 
