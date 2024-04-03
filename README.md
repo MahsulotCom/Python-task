@@ -7,7 +7,7 @@ Python task is a Django-based e-commerce platform that allows users to create sh
 Clone the repository:
 ```
 $  bash
-   git clone https://github.com/yourusername/allegro.git
+   git clone https://github.com/turgunovjasur/Python-task
 ```
 Create a virtual environment and activate it:
 ```
