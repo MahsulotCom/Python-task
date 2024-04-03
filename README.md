@@ -5,11 +5,7 @@
 
 * Dashboard
 
-<img src=
-"https://i.ibb.co/Fwk8cCt/Screenshot-2.png"
-         alt="Main Page">
 
-* Logout page
 
 Python task is a Django-based e-commerce platform that allows users to create shops, add products, manage orders, and more.
 
@@ -80,11 +76,18 @@ $ Access the admin panel at http://127.0.0.1:8000/admin/ and log in with the sup
 ```
 $ Create shops, add products, manage orders, and view analytics.
 ```
+<img src=
+"https://i.ibb.co/Fwk8cCt/Screenshot-2.png"
+         alt="Main Page">
 
-## Management
+* Logout page
 
-* Moderation for products. ✅
-* Moderation of all available pages. ✅
+<img src=
+"https://i.ibb.co/NxR9wGx/Screenshot-3.png"
+         alt="Main Page">
+
+* Product list
+
 
 ## Technologies Used
 
