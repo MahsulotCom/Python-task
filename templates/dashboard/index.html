@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Com</title>
+</head>
+<body>
+{% if user.is_authenticated %}
+    <h1>{{ user.username }}, MahsulotCom saytiga xush kelibsiz!</h1>
+    <a class="au-btn au-btn--block au-btn--blue m-b-20 text-center" href="{% url 'dashboard:logout_page' %}">logout</a>
+{% endif %}
+</body>
+</html>
