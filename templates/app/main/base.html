@@ -1,0 +1,80 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Qoduby - Admin & Dashboard template by tempload."/>
+    <meta name="keywords"
+          content="qoduby, tempload, bootstrap, bootstrap 5, admin, template, dashboard, theme, admin themes, admin, templates"/>
+    <meta name="author" content="tempload"/>
+    <title>Admin Panel</title>
+    <style>
+        .image-container {
+            flex: 1;
+            margin-right: 10px; /* Adjust as needed for spacing */
+        }
+
+        @media (max-width: 768px) {
+            .image-container {
+                flex-basis: 100%;
+                margin-right: 0;
+                margin-bottom: 10px; /* Adjust as needed for spacing */
+            }
+        }
+
+    </style>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{% static 'assets/media/itca.png' %}"/>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap"
+          rel="stylesheet">
+
+    <!-- Global CSS -->
+    <link href="{% static 'assets/css/style.css' %}" rel="stylesheet" type="text/css"/>
+
+    <!-- Light-Dark Mode & Theme Direction Selector -->
+    <script src="{% static 'assets/js/theme.js' %}" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="app-root">
+    <!-- ***** Sidebar Start ***** -->
+    {% include 'app/main/sidebar.html' %}
+    <!-- ***** Sidebar End ***** -->
+
+    <!-- ***** Responsive Menu Backdrop Start ***** -->
+    <div class="menu-backdrop"></div>
+    <!-- ***** Responsive Menu Backdrop End ***** -->
+
+    <!-- ***** Main Start ***** -->
+    <main class="app-main">
+        <!-- ***** Header Start ***** -->
+        {% include 'app/main/header.html' %}
+        <!-- ***** Header End ***** -->
+
+        <!-- ***** Content Start ***** -->
+        {% block content %}
+
+        {% endblock %}
+        <!-- ***** Content End ***** -->
+
+
+    </main>
+    <!-- ***** Main End ***** -->
+</div>
+
+<!-- Plugin Bundle -->
+<script src="{% static 'assets/js/plugins.bundle.js' %}" crossorigin="anonymous"></script>
+<!-- Common Javascript -->
+<script src="{% static 'assets/js/app.js' %}" crossorigin="anonymous"></script>
+<!-- Page Specific Javascript -->
+<script src="{% static 'assets/js/pages/projects/ecommerce/products.js' %}" crossorigin="anonymous"></script>
+</body>
+
+<!-- Mirrored from qoduby.tempload.com/html/demo2/dist/projects-ecommerce-products.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 15 Aug 2023 18:41:35 GMT -->
+</html>
