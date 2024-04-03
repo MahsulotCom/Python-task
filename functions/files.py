@@ -66,8 +66,10 @@ def update_file( source_id, source, image_url, user, db):
 def file_delete(source_id,source, db):
     file = one_file_via_source_id(source_id=source_id, source=source, db=db)
     if  file:
-
-        os.unlink(file.image_url)
-        db.query(Files).filter(Files.id == file.id).delete()
-        db.commit()
+        try:
+            os.unlink(file.image_url)
+            db.query(Files).filter(Files.id == file.id).delete()
+            db.commit()
+        except Exception :
+            pass
         return {"data": "Ma'lumot o'chirildi !"}

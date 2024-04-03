@@ -3,7 +3,7 @@ import shutil
 import typing
 from fastapi import APIRouter, Depends, HTTPException, UploadFile, File
 from sqlalchemy.orm import Session
-from functions.product import all_products, add_product, update_product, delete_product
+from functions.product import all_products, add_product, update_product, delete_product, one_product
 from db import get_db
 
 from pydantic.datetime_parse import date
@@ -16,12 +16,23 @@ product_router = APIRouter()
 
 
 @product_router.get("", status_code=200)
-async def all_product(search: str = None, active: bool = True, start_date: date = None, end_date: date = None,
-                      page: int = 1, limit: int = 20,
-                      db: Session = Depends(get_db), current_user: UserCurrent = Depends(
+async def all_product(
+        filter: typing.Literal['amount', 'real_price', 'trade_price'],
+        sort: typing.Literal["desc", "asc"],
+        search: str = None,
+        active: bool = None,
+        category_id: int = 0,
+        id: int = 0,
+        start_date: date = None, end_date: date = None,
+        page: int = 1, limit: int = 20,
+        db: Session = Depends(get_db), current_user: UserCurrent = Depends(
             get_current_active_user)):
     roll_verification(current_user, inspect.currentframe().f_code.co_name)
-    return all_products(search=search, active=active, start_date=start_date, end_date=end_date, page=page, limit=limit,
+    if id:
+        return one_product(db=db, id=id)
+
+    return all_products(search=search, active=active, field=filter, sort=sort, category_id=category_id,
+                        start_date=start_date, end_date=end_date, page=page, limit=limit,
                         db=db)
 
 
@@ -80,5 +91,6 @@ async def product_update(
 @product_router.delete("/delete")
 async def product_delete(id: int, db: Session = Depends(get_db), current_user: UserCurrent = Depends(
     get_current_active_user)):
+    roll_verification(current_user, inspect.currentframe().f_code.co_name)
     file_delete(source_id=id, source='product', db=db)
     return delete_product(id=id, db=db)

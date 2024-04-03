@@ -7,7 +7,7 @@ from db import Base, engine
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI(
-    title="Python task for Unical",
+    title="Online store api",
     responses={200: {'description': 'Ok'}, 201: {'description': 'Created'}, 400: {'description': 'Bad Request'},
                401: {'desription': 'Unauthorized'}}
 )

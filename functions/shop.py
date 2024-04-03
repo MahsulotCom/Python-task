@@ -6,15 +6,12 @@ from sqlalchemy.orm import joinedload
 
 def all_shops(search, page, limit, db):
     """
-
-
     :param search:
     :param page:
     :param limit:
     :param db:
     :return:
-    .join ( Phones ).outerjoin ( Orders ).options (
-            joinedload ( Customers.social ).load_only ( SocialMedia.name, SocialMedia.link ),
+
     """
     shops = db.query(Shop).options(joinedload(Shop.shop_image))
     if search:
