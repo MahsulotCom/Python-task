@@ -1,5 +1,6 @@
 from django.db import models
 from django.conf import settings
+from django.utils.html import mark_safe
 from apps.common.utils import compress_image, upload
 
 
@@ -18,3 +19,9 @@ class Shop(models.Model):
 
     def __str__(self):
         return self.title
+
+    @property
+    def thumbnail_preview(self):
+        if self.image:
+            return mark_safe('<img src="{}" width="50" height="50" />'.format(self.image.url))
+        return ""

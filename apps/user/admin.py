@@ -15,3 +15,4 @@ class UserAdmin(admin.ModelAdmin):
     list_display = ('phone_number', 'role', 'gender')
     search_fields = ('phone_number',)
     ordering = ('phone_number',)
+    list_filter = ('role', 'gender')

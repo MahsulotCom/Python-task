@@ -4,6 +4,7 @@ from django.conf import settings
 from django.db.models.signals import pre_save
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.dispatch import receiver
+from django.utils.html import mark_safe
 from apps.common.models import BaseModel
 from apps.common.utils import compress_image, upload
 from apps.shop.models import Shop
@@ -43,6 +44,12 @@ class Product(BaseModel):
     def __str__(self):
         return self.title
 
+    @property
+    def thumbnail_preview(self):
+        if self.image:
+            return mark_safe('<img src="{}" width="50" height="50" />'.format(self.image.url))
+        return ""
+
 
 class ProductVariant(BaseModel):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
@@ -68,6 +75,12 @@ class ProductVariantImage(models.Model):
             if image.size > settings.IMAGE_SIZE_TO_COMPRESS:
                 self.image = compress_image(image)
         super(ProductVariantImage, self).save(*args, **kwargs)
+
+    @property
+    def thumbnail_preview(self):
+        if self.image:
+            return mark_safe('<img src="{}" width="50" height="50" />'.format(self.image.url))
+        return ""
 
 
 class Discount(models.Model):
