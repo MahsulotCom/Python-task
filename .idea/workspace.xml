@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="68b525b3-2bd6-47b6-b0fd-1f487fc047e7" name="Changes" comment="initial commit">
       <change afterPath="$PROJECT_DIR$/base.db" afterDir="false" />
@@ -115,6 +118,10 @@
           <url>file://$PROJECT_DIR$/models/users.py</url>
           <line>16</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/routes/category.py</url>
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

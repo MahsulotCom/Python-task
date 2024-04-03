@@ -6,16 +6,18 @@ from routes.auth import get_password_hash
 from utils.pagination import pagination
 
 
-def all_users( search,roll,  page, limit, db):
+def all_users(search,active, roll, page, limit, db):
     users = db.query(Users)
     if search:
         search_formatted = "%{}%".format(search)
         users = users.filter(
             Users.name.ilike(search_formatted) | Users.username.ilike(search_formatted))
 
-    if roll in ["Admin","User_Admin"]:
+    if roll:
         users = users.filter(Users.roll == roll)
-        
+    if active in [True, False]:
+        users = users.filter(Users.active == active)
+
     users = users.order_by(Users.id.desc())
     return pagination(users, page, limit)
 
@@ -27,12 +29,10 @@ def one_user(db, id):
     raise HTTPException(status_code=400, detail="Bunday foydalanuvchi mavjud emas")
 
 
-def add_user(form, Users, db):
+def add_user(form, db):
     user_verification = db.query(Users).filter(Users.username == form.username).first()
     if user_verification:
         raise HTTPException(status_code=400, detail="Bunday foydalanuvchi mavjud ")
-    number_verification = db.query(Users).filter(Users.number == form.number).first()
-
     new_user = Users(
         name=form.name,
         username=form.username,
@@ -45,8 +45,9 @@ def add_user(form, Users, db):
     db.commit()
     return new_user
 
+
 def update_user(form, db):
-    one_user(db=db,id=form.id)
+    one_user(db=db, id=form.id)
     db.query(Users).filter(Users.id == form.id).update({
         Users.username: form.username,
         Users.name: form.name,
@@ -58,6 +59,7 @@ def update_user(form, db):
 
     )
     db.commit()
+    raise HTTPException(status_code=200, detail=f"Amaliyot muvaffaqiyatli bajarildi")
 
 
 def delete_user(id, db):
@@ -66,6 +68,3 @@ def delete_user(id, db):
         Users.active: False, })
     db.commit()
     raise HTTPException(status_code=200, detail=f"Amaliyot muvaffaqiyatli bajarildi")
-
-
-

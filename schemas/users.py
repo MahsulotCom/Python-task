@@ -1,12 +1,12 @@
-from pydantic import BaseModel
-from typing import Optional, List
+from typing import Optional
+from pydantic import BaseModel,  constr
 
 
 class UserBase(BaseModel):
     name: str
     username: str
     roll: str
-    password: str
+    password: constr(min_length=4)
     number: str
 
 

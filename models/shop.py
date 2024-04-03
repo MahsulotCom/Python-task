@@ -11,3 +11,4 @@ class Shop(Base):
     description = Column(Text, nullable=True)
     created_at = Column(DateTime(timezone=True), default=func.now())
     user_id = Column(Integer,ForeignKey('Users.id'))
+

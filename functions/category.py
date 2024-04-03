@@ -26,7 +26,7 @@ def one_category(db, id):
     raise HTTPException(status_code=400, detail="Bunday kategoriya mavjud emas")
 
 
-def create_category(form, thisuser, db,  ):
+def add_category(form, thisuser, db,  ):
     new_category_db = Category(
         title=form.title,
         description=form.description,
@@ -49,7 +49,7 @@ def update_category(form,  thisuser, db,):
     db.commit()
     raise HTTPException(status_code=200, detail=f"Amaliyot muvaffaqiyatli bajarildi")
 
-def delete_shop(id, db):
+def delete_category(id, db):
     one_category(db=db, id=id)
     db.query(Category).filter(Category.id == id).update({
         Category.active: False, })

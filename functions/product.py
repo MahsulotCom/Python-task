@@ -7,7 +7,7 @@ from utils.pagination import pagination
 
 
 def all_products(active, search, start_date, end_date, page, limit, db):
-    products = db.query(Product).options(joinedload(Product.user))
+    products = db.query(Product)
     if search:
         search_formatted = "%{}%".format(search)
         products = products.filter(
@@ -37,7 +37,7 @@ def one_product(db, id):
     raise HTTPException(status_code=400, detail="bunday maxsulot mavjud emas")
 
 
-def create_product(title, unit, real_price, trade_price, category_id, amount, thisuser, db, description: str = None, ):
+def add_product(title, unit, real_price, trade_price, category_id, amount, thisuser, db, description: str = None, ):
     new_product_db = Product(
         title=title,
         unit=unit,
@@ -51,7 +51,8 @@ def create_product(title, unit, real_price, trade_price, category_id, amount, th
     db.add(new_product_db)
     db.flush()
     db.commit()
-    raise HTTPException(status_code=200, detail=f"Amaliyot muvaffaqiyatli bajarildi")
+    return new_product_db
+
 
 
 def update_product(id,title, unit, real_price, trade_price, category_id, amount, thisuser, db, description: str = None,):
@@ -71,7 +72,7 @@ def update_product(id,title, unit, real_price, trade_price, category_id, amount,
     raise HTTPException(status_code=200, detail=f"Amaliyot muvaffaqiyatli bajarildi")
 
 
-def delete_user(id, db):
+def delete_product(id, db):
     one_product(db=db, id=id)
     db.query(Product).filter(Product.id == id).update({
         Product.active: False, })

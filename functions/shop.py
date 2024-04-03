@@ -1,11 +1,22 @@
 from fastapi import HTTPException
-
 from models.shop import Shop
 from utils.pagination import pagination
+from sqlalchemy.orm import joinedload
 
 
 def all_shops(search, page, limit, db):
-    shops = db.query(Shop)
+    """
+
+
+    :param search:
+    :param page:
+    :param limit:
+    :param db:
+    :return:
+    .join ( Phones ).outerjoin ( Orders ).options (
+            joinedload ( Customers.social ).load_only ( SocialMedia.name, SocialMedia.link ),
+    """
+    shops = db.query(Shop).options(joinedload(Shop.shop_image))
     if search:
         search_formatted = "%{}%".format(search)
         shops = shops.filter(
@@ -22,7 +33,7 @@ def one_shop(db, id):
     raise HTTPException(status_code=400, detail="Bunday do'kon mavjud emas")
 
 
-def create_shop(title, thisuser, db, description: str = None, ):
+def add_shop(title, thisuser, db, description: str = None, ):
     new_shop_db = Shop(
         title=title,
         description=description,
@@ -31,7 +42,8 @@ def create_shop(title, thisuser, db, description: str = None, ):
     db.add(new_shop_db)
     db.flush()
     db.commit()
-    raise HTTPException(status_code=200, detail=f"Amaliyot muvaffaqiyatli bajarildi")
+    return {"id":new_shop_db.id}
+    # raise HTTPException(status_code=200, detail=f"Amaliyot muvaffaqiyatli bajarildi")
 
 
 def update_shop(id, title, thisuser, db, description: str = None, ):
@@ -48,7 +60,6 @@ def update_shop(id, title, thisuser, db, description: str = None, ):
 
 def delete_shop(id, db):
     one_shop(db=db, id=id)
-    db.query(Shop).filter(Shop.id == id).update({
-        Shop.active: False, })
+    db.query(Shop).filter(Shop.id == id).delete()
     db.commit()
     raise HTTPException(status_code=200, detail=f"Amaliyot muvaffaqiyatli bajarildi")
