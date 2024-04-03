@@ -47,7 +47,8 @@ http://127.0.0.1:8000/admin/doc/
 ```
 ### Expected Result
 
-![Screenshot from 2024-04-03 10-05-00.png](..%2F..%2FPictures%2FScreenshot%20from%202024-04-03%2010-05-00.png)
+![Screenshot from 2024-04-03 10-05-00](https://github.com/salohiddinhalimjonov/python_task/assets/72136403/69d3a4d7-1cf9-48b7-aa46-b7efbae7918b)
+
 
 # UnicalExpress test for Python developer 
 Here lies the description and requirements of the test task for Python/Django Developer position applicants.
