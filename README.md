@@ -1,3 +1,55 @@
+# Ecommerce
+
+## Project Setup
+### Create Virtual Environment
+```virtualenv venv```
+
+### Activate Virtual Environment
+```source venv/bin/activate```
+
+### Configure Environment files
+```cp .env.example .env```
+
+edit .env file and add your own credentials
+
+### Install Dependencies
+```pip install -r requirements.txt```
+
+### Upload initial data
+For loading the data, run the commands below:
+```
+python3 manage.py migrate
+python3 faker.py  
+```
+
+### Run project
+```
+python manage.py runserver
+```
+
+### Run the following url for admin panel
+
+```
+http://127.0.0.1:8000/admin/
+```
+#### User Credentials:
+```
+Super Admin: phone_number='+998902222222' password='ABcd123456'
+Product Admin: phone_number='+998903333333' password='ABcd123456'
+Category Admin: phone_number='+998904444444' password='ABcd123456'
+Order Admin: phone_number='+998905555555' password='ABcd123456'
+Customer: phone_number='+998901111111' password='ABcd123456'
+```
+### Run the following url for reading project docs
+
+```
+http://127.0.0.1:8000/admin/doc/
+```
+### Expected Result (For Super Admin)
+
+![Screenshot from 2024-04-03 10-05-00](https://github.com/salohiddinhalimjonov/python_task/assets/72136403/69d3a4d7-1cf9-48b7-aa46-b7efbae7918b)
+
+
 # UnicalExpress test for Python developer 
 Here lies the description and requirements of the test task for Python/Django Developer position applicants.
 
