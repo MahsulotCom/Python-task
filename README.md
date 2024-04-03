@@ -80,7 +80,7 @@ $ Create shops, add products, manage orders, and view analytics.
 "https://i.ibb.co/Fwk8cCt/Screenshot-2.png"
          alt="Main Page">
 
-* Logout page
+* Login page
 
 <img src=
 "https://i.ibb.co/NxR9wGx/Screenshot-3.png"
