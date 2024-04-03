@@ -12,6 +12,7 @@ def create_groups(apps, schema_editor):
 
     # Assign appropriate permissions to the 'Product Moderation' group
     product_moderation_permissions = [
+        "add_product",
         "view_product",
         "change_product",
         "delete_product",
@@ -25,9 +26,22 @@ def create_groups(apps, schema_editor):
 
     # Assign appropriate permissions to the 'Page Moderation' group
     page_moderation_permissions = [
-        "view_page",
-        "change_page",
-        "delete_page",
+        "add_shop",
+        "view_shop",
+        "change_shop",
+        "delete_shop",
+        "add_category",
+        "view_category",
+        "change_category",
+        "delete_category",
+        "add_product",
+        "view_product",
+        "change_product",
+        "delete_product",
+        "add_productimage",
+        "view_productimage",
+        "change_productimage",
+        "delete_productimage",
     ]
     for permission in page_moderation_permissions:
         permission_obj = Permission.objects.get(codename=permission)
