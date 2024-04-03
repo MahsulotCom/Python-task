@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres
+    environment:
+      POSTGRES_DB: market_db
+      POSTGRES_USER: market_admin
+      POSTGRES_PASSWORD: root
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+
+  web:
+    build: .
+    command: >
+      bash -c "
+        python3 manage.py migrate &&
+        python3 manage.py collectstatic --no-input &&
+        gunicorn --reload -b 0.0.0.0:8000 config.wsgi --workers 1 --timeout 300 --log-level DEBUG
+      "
+    volumes:
+      - .:/code
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
+    environment:
+      DB_NAME: market_db
+      DB_USER: market_admin
+      DB_PASSWORD: root
+      DB_HOST: db
+      DB_PORT: 5432
+
+volumes:
+  postgres_data:
