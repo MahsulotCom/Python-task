@@ -69,9 +69,9 @@ $ Access the admin panel at http://127.0.0.1:8000/admin/ and log in with the sup
 ```
 $ Create shops, add products, manage orders, and view analytics.
 ```
-<img height="300" src="C:\Users\Admin\Desktop\Elastic\Python-task\media\product_images\1.png" width="500"/>
-https://ibb.co/9HkfbJb
-https://i.ibb.co/VYchgdg/1.png
+<img src=
+"https://i.ibb.co/VYchgdg/1.png"
+         alt="Main Page">
 
 ## Management
 
