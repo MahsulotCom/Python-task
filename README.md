@@ -71,6 +71,7 @@ $ Create shops, add products, manage orders, and view analytics.
 ```
 <img height="300" src="C:\Users\Admin\Desktop\Elastic\Python-task\media\product_images\1.png" width="500"/>
 https://ibb.co/9HkfbJb
+https://i.ibb.co/VYchgdg/1.png
 
 ## Management
 
