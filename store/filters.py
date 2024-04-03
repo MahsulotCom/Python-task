@@ -2,10 +2,19 @@ from django.contrib import admin
 
 
 class PriceRangeFilter(admin.SimpleListFilter):
+    """
+    Custom filter for filtering objects based on price range.
+    """
+
     title = "Price range"
     parameter_name = "price_range"
 
     def lookups(self, request, model_admin):
+        """
+        Returns a list of tuples representing the filter options.
+        The first element of each tuple is the filter value,
+        and the second element is the human-readable name for the filter.
+        """
         return (
             ("<100", "Less than 100"),
             ("100-200", "100 to 200"),
@@ -15,6 +24,9 @@ class PriceRangeFilter(admin.SimpleListFilter):
         )
 
     def queryset(self, request, queryset):
+        """
+        Filters the queryset based on the selected filter value.
+        """
         if self.value() == "<100":
             return queryset.filter(price__lt=100)
         if self.value() == "100-200":
