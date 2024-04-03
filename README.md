@@ -3,7 +3,7 @@
 "https://i.ibb.co/VYchgdg/1.png"
          alt="Main Page">
 <img src=
-"https://ibb.co/d2skXxy"
+"https://i.ibb.co/Fwk8cCt/Screenshot-2.png"
          alt="Main Page">
 
 Python task is a Django-based e-commerce platform that allows users to create shops, add products, manage orders, and more.
