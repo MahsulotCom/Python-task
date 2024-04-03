@@ -42,3 +42,10 @@ Fork this repository, prepare your solution and make a pull request when you're 
 Don't forget to write docs :)
 
 ## Good luck!
+
+
+[//]: # (mine: create role and postgresql database)
+`sudo -u postgres psql
+create user task with password 'task123';
+create database taskdb owner task;`
+![img.png](img.png)
