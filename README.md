@@ -1,44 +1,75 @@
-# UnicalExpress test for Python developer 
-Here lies the description and requirements of the test task for Python/Django Developer position applicants.
+# Python task
 
-## Task goal
-The goal of this test task is to develop a simple Django admin panel which purpose is to manage the content for an online store and to have multi-role support. 
+Python task is a Django-based e-commerce platform that allows users to create shops, add products, manage orders, and more.
 
-## Domain description
-The following image represents the class diagram that should be considered during development of your admin panel. This is the minimal requirements for classes and fields that we are expecting from you to add. You can make your own updates and add additional functional. All images fields should be represented as links on images. You are free to use any database, which seems suitable for you and for the project. 
+## Installation
 
-![Class diagram](https://hb.bizmrg.com/kazanexpress/class_diagram.png)
+Clone the repository:
+```
+$  bash
+   git clone https://github.com/yourusername/allegro.git
+```
+Create a virtual environment and activate it:
+```
+$  python3 -m venv env
+source env/bin/activate
+```
+Install the dependencies:
+```
+$  pip install -r requirements.txt
+```
+Run migrations:
+```
+$  python manage.py migrate
+```
+Create a superuser:
+```
+$  python manage.py createsuperuser
+```
+Run the development server:
+```
+$  python manage.py runserver
+```
 
-## Requirements
-### Shop admin
-1. Navigate through the shops list.
-2. Make a search by title.
-3. Edit everything except shop id.
-4. Upload image as shop pic. 
 
-### Product admin
-1. Navigate through product list.
-2. Search by id or product title.
-3. Edit everything except product id.
-4. First image should be displayed as main image in both list view and product view.
-5. Sort products in product list by number of orders and by price.
-6. Filter list of products by active flag.
-7. Filter by price range.
-8. Attach product to one or more categories.
+## Usage
 
-### Category admin
-1. Navigate through categories list.
-2. Search by product id, title and parent category.
-3. Add one or more parent categories. 
-4. Display all possible paths to chosen category. 
+```
+$ Access the admin panel at http://127.0.0.1:8000/admin/ and log in with the superuser credentials.
+```
+```
+$ Create shops, add products, manage orders, and view analytics.
+```
 
-### Management
-There should be at least two administrative roles for the following purposes:
-1. Moderation for products. 
-2. Moderation of all available pages. 
+## Features
 
-## Submission
-Fork this repository, prepare your solution and make a pull request when you're done.
-Don't forget to write docs :)
+* Custom user model and user profile.
+* Product inventory management.
+* Category hierarchy for products.
+* Image upload for products and shops.
+* Order management with different order statuses.
+* Integration with payment systems for online transactions.
+* Search functionality for products.
+* Pagination for product lists.
+* SMS-based user registration.
+* Discount announcement system based on user interactions.
+* Analytics dashboard for sales and user activities.
 
-## Good luck!
+## Technologies Used
+
+* Python Django
+* Django REST Framework
+* PostgreSQL
+* Pillow
+* Psycopg2
+* Django admin soft dashboard
+* Vue.js
+
+## Contributors
+
+* Jasur
+
+## License
+
+* MIT License
+
